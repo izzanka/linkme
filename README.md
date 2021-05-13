@@ -1,8 +1,8 @@
 ## Preview
 <p align="center">
-    <img src="public/images/ss/ss1.png" alt="ss1">
-    <img src="public/images/ss/ss2.png" alt="ss2">
-    <img src="public/images/ss/ss3.png" alt="ss3">
+    <img src="public/ss/ss1.png" alt="ss1">
+    <img src="public/ss/ss2.png" alt="ss2">
+    <img src="public/ss/ss3.png" alt="ss3">
 </p>
 
 ## Installation
