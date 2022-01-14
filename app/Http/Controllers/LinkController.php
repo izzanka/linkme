@@ -29,6 +29,10 @@ class LinkController extends Controller
      */
     public function create()
     {
+        $checkLink = Link::where('user_id',auth()->id())->count();
+        if($checkLink >= 5){
+            return redirect()->to('/dashboard/links');
+        }
         return view('links.create');
     }
 
@@ -45,11 +49,22 @@ class LinkController extends Controller
             'link' => 'required|url'
         ]);
 
-        $link = Auth::user()->links()->create($request->only(['name','link']));
+        $checkLink = Link::where('user_id',auth()->id())->count();
+
+        if($checkLink >= 5){
+            return redirect()->to('/dashboard/links');
+        }
+
+        $link = Auth::user()->links()->create([
+            'name' => ucfirst($request->name),
+            'link' => $request->link
+        ]);
+
         if($link){
             return redirect()->to('/dashboard/links')->with(['success' => 'Link was created successfully']);
+        }else{
+            return redirect()->to('/dashboard/links');
         }
-        return back();
     }
 
     /**
@@ -115,6 +130,6 @@ class LinkController extends Controller
 
         $link->delete();
 
-        return redirect()->to('/dashboard/links');
+        return redirect()->to('/dashboard/links')->with(['success' => 'Link was deleted successfully']);
     }
 }

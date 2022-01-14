@@ -39,18 +39,24 @@ class UserController extends Controller
             'image' => 'image|mimes:jpeg,jpg,png,svg|max:2048'
         ]);
 
+        $username = ucwords($request->username);
+
         if($request->hasFile('image')){
 
             $image = $request->file('image');
             $imageName = time() . '.' . $image->extension();
             $image->move('img/',$imageName);
 
-            Auth::user()->update(['username' => $request->username,
-                                  'image' => $imageName]);
+            Auth::user()->update([
+                'username' => $username,
+                'image' => $imageName
+            ]);
 
         }else{
 
-            Auth::user()->update(['username' => $request->username]);
+            Auth::user()->update(
+                ['username' => $username]
+            );
 
         }
 
@@ -67,7 +73,6 @@ class UserController extends Controller
         Auth::user()->update(['password' => Hash::make($request->password)]);
 
         return back()->with(['updated_password' => 'Password was updated successfully']);
-
     }
 
 }
