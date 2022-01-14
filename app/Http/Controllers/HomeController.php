@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if($request->search){
-            $user = User::where('username','like','%' . $request->search . '%')->whereHas('links')->first();
+            $user = User::with('links')->where('username','like','%' . $request->search . '%')->whereHas('links')->first();
             if($user){
                 return view('users.show',compact('user'));
             }else{

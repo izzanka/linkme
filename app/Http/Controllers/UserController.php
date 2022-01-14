@@ -54,9 +54,9 @@ class UserController extends Controller
 
         }else{
 
-            Auth::user()->update(
-                ['username' => $username]
-            );
+            Auth::user()->update([
+                'username' => $username
+            ]);
 
         }
 
