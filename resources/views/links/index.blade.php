@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 card">
+                @include('layouts.notif')
                 <div class="card-body">
                     <h4 class="card-title"><a href="{{ route('user.show',auth()->user()->username) }}">Your Links</a></h4>
                     <table class="table table-striped">
@@ -13,7 +14,7 @@
                                 <th>Url</th>
                                 <th>Total Visits</th>
                                 <th>Last Visit</th>
-                                <th>Actions</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +29,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    @if ($links->count() == 5)
+                    <a href="javascript:void(0)" class="btn btn-secondary {{ session('success') ? 'is-valid' : '' }}">Create New Link</a>
+                    @else
                     <a href="/dashboard/links/create" class="btn btn-primary {{ session('success') ? 'is-valid' : '' }}">Create New Link</a>
+                    @endif
                     @if (session('success'))
                         <div class="valid-feedback">{{ session('success') }}</div>
                     @endif

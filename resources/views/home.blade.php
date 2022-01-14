@@ -60,13 +60,16 @@
     <div class="row justify-content-center">
         <div class="content">
             <div class="title m-b-md">
-                LinkTree
+                LinkMe
             </div>
             <form class="form-inline my-2 my-lg-0" action="/" method="GET">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search By Username" aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 {{ session('success') ? 'is-valid' : '' }}" type="submit">Search</button><br>
                 @if (session()->has('error'))
                     <div class="ml-2 text-danger">{{ session('error') }}</div>
+                @endif
+                @if (session('success'))
+                        <div class="valid-feedback">{{ session('success') }}</div>
                 @endif
             </form>
         </div>
