@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row">
             <div class="col-12 card">
-                @include('layouts.notif')
                 <div class="card-body">
                     <h4 class="card-title"><a href="{{ route('user.show',auth()->user()->username) }}">Your Links</a></h4>
                     <table class="table table-striped">
