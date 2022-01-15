@@ -17,6 +17,7 @@ a Linktree (https://linktr.ee) website clone
 ### Library
 
 * [JQuery](https://jquery.com)
+* [Select2](https://select2.org)
 
 ### Api
 
