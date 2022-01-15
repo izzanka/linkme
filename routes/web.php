@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/','HomeController@index')->name('home');
-Route::post('/visit/{link}','VisitController@store');
+Route::post('/visit/{link}','VisitController@store')->name('visit.link');
 
 Route::get('/{user}','UserController@show')->name('user.show');
 
@@ -26,8 +26,8 @@ Route::group(['middleware' => 'auth','prefix' => 'dashboard'], function(){
     // Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('links','LinkController');
 
-    Route::get('/settings','UserController@edit');
-    Route::post('/settings','UserController@update');
+    Route::get('/settings','UserController@edit')->name('settings.edit');
+    Route::post('/settings','UserController@update')->name('settings.update');
     Route::post('/profile/{id}','UserController@update_profile')->name('profile.update');
     Route::post('/profile','UserController@update_password')->name('password.update');
 });
