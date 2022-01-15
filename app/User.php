@@ -17,6 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'username_slug',
         'email',
         'password',
         'image',
@@ -42,6 +43,6 @@ class User extends Authenticatable
     }
 
     public function getRouteKeyName(){
-        return 'username';
+        return 'username_slug';
     }
 }
