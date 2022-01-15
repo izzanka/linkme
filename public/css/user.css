@@ -19,7 +19,7 @@ img {
   }
 
 .profile-name {
-      font-size: 23px;
+      font-size: 20px;
       text-align: center;
       padding: 10px;
   }
@@ -45,7 +45,7 @@ a {
 
 .bottom-text {
     text-align: center;
-    margin-top: 28px;
+    margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
 }
