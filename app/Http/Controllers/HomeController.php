@@ -9,23 +9,19 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->search){
+        return view('home');
+    }
 
-            $request->validate([
-                'search' => 'required|alpha|max:30'
-            ]);
+    public function search(Request $request){
 
-            $user = User::with('links')->where('username','like','%' . $request->search . '%')->whereHas('links')->first();
-            
-            if($user){
-                return view('users.show',compact('user'));
-            }else{
-                return back()->with(['not-found' => "Username not found or doesn't have any links!"]);
-            }
+        $users = [];
 
-        }else{
-            return view('home');
+        if($request->has('q')){
+            $search = $request->q;
+            $users = User::select('id','username','username_slug')->with('links')->where('username','like',"%$search%")->whereHas('links')->get();
         }
+
+        return response()->json($users);
     }
 
 }

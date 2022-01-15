@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/','HomeController@index')->name('home');
+Route::get('/search','HomeController@search')->name('search');
 Route::post('/visit/{link}','VisitController@store')->name('visit.link');
 
 Route::get('/{user}','UserController@show')->name('user.show');

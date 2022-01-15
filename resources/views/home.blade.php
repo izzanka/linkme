@@ -59,31 +59,43 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="content">
-            <div class="title m-b-md">
+            <div class="title">
                 LinkMe
             </div>
-            
-            @if (session('not-found'))
-                <div class="mb-2 text-danger">{{ session('not-found') }}</div>
-            @endif
-
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="mb-2 text-danger">
-                        {{ $error }}
-                    </div>
-                @endforeach
-            @endif
-            
-            <form class="form-inline my-2 my-lg-0" action="/" method="GET">
-                <div class="row">
-                    <div class="col-12">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search By Username" aria-label="Search" name="search">
-                        <button class="btn btn-outline-success my-2 my-sm-0 {{ session('success') ? 'is-valid' : '' }}" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
+            <select name="livesearch" class="form-control livesearch"></select>
         </div>
     </div>
 </div>
+
+<script>
+    let $q = $('.livesearch');
+
+    $q.select2({
+        placeholder: 'Search username',
+        ajax: {
+            url: "/search",
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            id: item.id,
+                            text: item.username,
+                            username_slug: item.username_slug,
+                        }
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+
+    $q.on('select2:select', function (e) {
+        window.location.href = "/" + e.params.data.username_slug;
+    })
+
+</script>
+
 @endsection
+
