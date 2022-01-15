@@ -62,15 +62,26 @@
             <div class="title m-b-md">
                 LinkMe
             </div>
+            
+            @if (session('not-found'))
+                <div class="mb-2 text-danger">{{ session('not-found') }}</div>
+            @endif
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="mb-2 text-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+            
             <form class="form-inline my-2 my-lg-0" action="/" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search By Username" aria-label="Search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0 {{ session('success') ? 'is-valid' : '' }}" type="submit">Search</button><br>
-                @if (session()->has('error'))
-                    <div class="ml-2 text-danger">{{ session('error') }}</div>
-                @endif
-                @if (session('success'))
-                        <div class="valid-feedback">{{ session('success') }}</div>
-                @endif
+                <div class="row">
+                    <div class="col-12">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search By Username" aria-label="Search" name="search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 {{ session('success') ? 'is-valid' : '' }}" type="submit">Search</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

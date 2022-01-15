@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 card">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{{ route('user.show',auth()->user()->username) }}">Your Links</a></h4>
+                    <h4 class="card-title"><a href="{{ route('user.show',auth()->user()->username_slug) }}">Your Links</a></h4>
                     <table class="table table-striped">
                         <thead>
                             <tr>
