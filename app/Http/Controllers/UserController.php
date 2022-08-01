@@ -64,7 +64,7 @@ class UserController extends Controller
 
     }
 
-    public function password_update(Request $request){
+    public function update_password(Request $request){
 
         $request->validate([
             'password' => 'required|confirmed|min:8'
