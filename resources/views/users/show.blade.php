@@ -2,7 +2,9 @@
 
 @section('content')
 <!-- Profile picture-->
-<img src="{{ asset('img/' . $user->image) }}" alt="profile picture" class="profile-picture">
+<div id="zoom" style="background-color: {{ $user->background_color }}">
+    <img src="{{ asset('img/' . $user->image) }}" alt="profile picture" class="profile-picture">
+</div>
 
 <!-- Profile name-->
 <div class="profile-name"><b>{{ $user->username }}</b></div>

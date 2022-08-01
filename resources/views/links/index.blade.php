@@ -6,7 +6,7 @@
             <div class="col-12 card">
                 <div class="card-body">
                     <h4 class="card-title"><a href="{{ route('user.show',auth()->user()->username_slug) }}" target="_blank">Your links</a></h4>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -28,18 +28,18 @@
                             @endforeach
                         </tbody>
                     </table>
+
                     @if ($links->count() == 5)
-                    <a href="javascript:void(0)" class="btn btn-secondary {{ session('success') ? 'is-valid' : '' }}">Create new link</a>
+                        <a href="javascript:void(0)" class="btn btn-secondary {{ session('success') ? 'is-valid' : '' }}">Create new link</a>
                     @else
-                    <a href="/dashboard/links/create" class="btn btn-primary {{ session('success') ? 'is-valid' : '' }}">Create new link</a>
+                        <a href="/dashboard/links/create" class="btn btn-primary {{ session('success') ? 'is-valid' : '' }}">Create new link</a>
                     @endif
 
                     @if($links->count() == 0)
-                    <a  href="javascript:void(0)" class="btn btn-secondary" >Copy your links</a>
+                        <a  href="javascript:void(0)" class="btn btn-secondary" >Copy your links</a>
                     @else
-                    <a onclick="copy()" href="javascript:void(0)" class="btn btn-success" id="copyLinks" data-href="{{ route('user.show', auth()->user()->username_slug) }}">Copy your links</a>
+                        <a onclick="copy()" href="javascript:void(0)" class="btn btn-success" id="copyLinks" data-href="{{ route('user.show', auth()->user()->username_slug) }}">Copy your links</a>
                     @endif
-                    
                     
                     @if (session('success'))
                         <div class="valid-feedback">{{ session('success') }}</div>

@@ -109,7 +109,7 @@
                     <div class="row">
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary {{ session('updated') ? 'is-valid' : '' }}">Save Password</button>
-                                            @if (session('updated'))
+                                @if (session('updated'))
                                 <div class="valid-feedback">{{ session('updated') }}</div>
                             @endif
                         </div>
