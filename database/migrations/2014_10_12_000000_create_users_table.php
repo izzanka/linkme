@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('username', 25)->unique();
             $table->string('username_slug');
+            $table->string('credential', 25)->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('background_color', 7)->default('#FFFFFF');
