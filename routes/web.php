@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Livewire\User\Auth\SignIn;
+use App\Http\Livewire\User\Auth\SignUp;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/sign-up', SignUp::class)->name('sign-up');
+Route::get('/sign-in', SignIn::class)->name('sign-in');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/sign-out', [AuthController::class, 'signout'])->name('sign-out');
 });
+
