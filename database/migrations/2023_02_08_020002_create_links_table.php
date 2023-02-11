@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('name');
-            $table->text('link');
+            $table->string('title', 25)->nullable();
+            $table->text('url');
+            $table->boolean('active')->default(false);
+            $table->bigInteger('clicks')->unsigned()->default(0)->index();
             $table->timestamps();
         });
     }

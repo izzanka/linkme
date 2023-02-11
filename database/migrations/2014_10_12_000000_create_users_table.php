@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('background_color', 7)->default('#FFFFFF');
             $table->string('text_color', 7)->default("#000000");
+            $table->bigInteger('views')->unsigned()->default(0)->index();
             $table->rememberToken();
             $table->timestamps();
         });

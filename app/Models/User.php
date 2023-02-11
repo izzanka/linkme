@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -22,11 +24,6 @@ class User extends Authenticatable
     public function links()
     {
         return $this->hasMany(Link::class);
-    }
-
-    public function visits()
-    {
-        return $this->hasManyThrough(Visit::class, Link::class);
     }
 
     public function getRouteKeyName()
