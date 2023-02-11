@@ -34,11 +34,12 @@ class SignUp extends Component
             'username_slug' => Str::slug($this->username),
             'email' => $this->email,
             'password' => bcrypt($this->password),
+            'credential' => $this->credential,
         ]);
 
-        Auth::login($user);
+        $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
 
-        session()->flash('message', 'Your account has been saved!, Welcome ' . $this->email);
+        Auth::login($user);
 
         return redirect()->route('home');
     }

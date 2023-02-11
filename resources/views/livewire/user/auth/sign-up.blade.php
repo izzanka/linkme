@@ -9,7 +9,7 @@
                 <form wire:submit.prevent="store">
                     <div class="mb-3">
                       <label class="form-label">Username*</label>
-                      <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter username" wire:model="username">
+                      <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter username" wire:model.lazy="username">
                       @error('username')
                           <div class="invalid-feedback">
                               {{ $message }}
@@ -19,7 +19,7 @@
 
                     <div class="mb-3">
                       <label class="form-label">Email address*</label>
-                      <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model="email">
+                      <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model.lazy="email">
                       @error('email')
                           <div class="invalid-feedback">
                               {{ $message }}
@@ -29,7 +29,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Password*</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Enter password"  autocomplete="off" wire:model="password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Enter password"  autocomplete="off" wire:model.lazy="password">
                         @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -38,8 +38,8 @@
                       </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Credential (Job / Title / Status)</label>
-                        <input type="text" class="form-control @error('credential') is-invalid @enderror" placeholder="Enter credential" wire:model="credential">
+                        <label class="form-label">Credential* (Job / Title / Status)</label>
+                        <input type="text" class="form-control @error('credential') is-invalid @enderror" placeholder="Enter credential" wire:model.lazy="credential">
                         @error('credential')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -56,13 +56,13 @@
 
                     @if ($image)
                         <div class="mb-3 text-center">
-                            <span class="avatar avatar-xl rounded-3 border border-dark" style="background-image: url({{ $image->temporaryUrl() }})"></span>
+                            <span class="avatar avatar-xl rounded-circle border border-dark" style="background-image: url({{ $image->temporaryUrl() }})"></span>
                         </div>
                     @endif
 
                     <div class="mb-3">
-                        <label class="form-label">Profile Image</label>
-                        <input type="file" class="form-control @error('image') is-invalid @enderror" autocomplete="off" wire:model="image">
+                        <label class="form-label">Profile Image*</label>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" wire:model.lazy="image">
                         @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -83,7 +83,7 @@
       </div>
 
       <div class="text-center text-muted mt-3">
-        Already have account? <a href="{{ route('sign-in') }}" tabindex="-1">Sign in</a>
+        Already have account? <a href="{{ route('login') }}" tabindex="-1">Sign in</a>
       </div>
     </div>
   </div>

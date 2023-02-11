@@ -24,7 +24,7 @@
           <form wire:submit.prevent="store">
             <div class="mb-3">
               <label class="form-label">Email address*</label>
-              <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your@email.com" autocomplete="off" wire:model="email">
+              <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="your@email.com" autocomplete="off" wire:model.lazy="email">
               @error('email')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -39,7 +39,7 @@
                 </span>
               </label>
 
-                <input type="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Your password"  autocomplete="off" wire:model="password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Your password"  autocomplete="off" wire:model.lazy="password">
                 @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}

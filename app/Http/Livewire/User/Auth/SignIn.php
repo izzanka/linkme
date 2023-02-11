@@ -26,8 +26,6 @@ class SignIn extends Component
 
         if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember))
         {
-            session()->flash('message', 'Welcome, ' . $this->email);
-
             return redirect()->route('home');
         }
 
