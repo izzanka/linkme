@@ -26,12 +26,12 @@ class SignIn extends Component
 
         if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember))
         {
-            return redirect()->route('home');
+            return redirect()->route('links.index');
         }
 
         session()->flash('message', 'Username or password is wrong!');
 
-        return redirect()->route('sign-in');
+        // return redirect()->route('sign-in');
     }
 
     public function render()

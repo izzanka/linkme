@@ -1,15 +1,12 @@
 <div class="page-center">
     <div class="container container-tight py-4">
-      {{-- <div class="text-center mb-4">
-        <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
-      </div> --}}
-      <div class="card card-md">
+      <div class="card card-md rounded-4">
             <div class="card-body">
                 <h2 class="text-center mb-4">Create new account</h2>
                 <form wire:submit.prevent="store">
                     <div class="mb-3">
-                      <label class="form-label">Username*</label>
-                      <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter username" wire:model.lazy="username">
+                      <label class="form-label required">Username</label>
+                      <input type="text" class="form-control rounded-3 @error('username') is-invalid @enderror" placeholder="Enter username" wire:model.lazy="username">
                       @error('username')
                           <div class="invalid-feedback">
                               {{ $message }}
@@ -18,8 +15,8 @@
                     </div>
 
                     <div class="mb-3">
-                      <label class="form-label">Email address*</label>
-                      <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" wire:model.lazy="email">
+                      <label class="form-label required">Email address</label>
+                      <input type="email" class="form-control rounded-3 @error('email') is-invalid @enderror" placeholder="Enter email" wire:model.lazy="email">
                       @error('email')
                           <div class="invalid-feedback">
                               {{ $message }}
@@ -28,8 +25,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Password*</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Enter password"  autocomplete="off" wire:model.lazy="password">
+                        <label class="form-label required">Password</label>
+                        <input type="password" class="form-control rounded-3 @error('password') is-invalid @enderror"  placeholder="Enter password"  autocomplete="off" wire:model.lazy="password">
                         @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -38,8 +35,8 @@
                       </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Credential* (Job / Title / Status)</label>
-                        <input type="text" class="form-control @error('credential') is-invalid @enderror" placeholder="Enter credential" wire:model.lazy="credential">
+                        <label class="form-label required">Credential (Job / Title / Status)</label>
+                        <input type="text" class="form-control rounded-3 @error('credential') is-invalid @enderror" placeholder="Enter credential" wire:model.lazy="credential">
                         @error('credential')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -61,8 +58,8 @@
                     @endif
 
                     <div class="mb-3">
-                        <label class="form-label">Profile Image*</label>
-                        <input type="file" class="form-control @error('image') is-invalid @enderror" wire:model.lazy="image">
+                        <label class="form-label required">Profile Image</label>
+                        <input type="file" class="form-control rounded-3 @error('image') is-invalid @enderror" wire:model.lazy="image">
                         @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -71,7 +68,7 @@
                       </div>
 
                     <div class="form-footer">
-                      <button type="submit" class="btn btn-primary w-100">
+                      <button type="submit" class="btn btn-primary w-100 rounded-4">
                             <div wire:loading wire:target="store">
                                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                             </div>

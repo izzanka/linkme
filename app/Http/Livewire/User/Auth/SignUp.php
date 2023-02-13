@@ -39,6 +39,12 @@ class SignUp extends Component
 
         $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
 
+        // Appearance::create([
+        //     'user_id' => $user->id
+        // ]);
+
+        $user->appearance()->create();
+
         Auth::login($user);
 
         return redirect()->route('home');
