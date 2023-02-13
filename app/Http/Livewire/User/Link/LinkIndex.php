@@ -10,7 +10,7 @@ class LinkIndex extends Component
     public $status, $title, $url;
 
     protected $listeners = [
-        'link-index-render' => 'render'
+        'link-index-render' => '$refresh'
     ];
 
     public function mount()

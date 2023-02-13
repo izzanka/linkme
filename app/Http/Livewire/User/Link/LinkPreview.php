@@ -6,8 +6,10 @@ use Livewire\Component;
 
 class LinkPreview extends Component
 {
+    public $appearance;
+
     protected $listeners = [
-        'link-preview-render' => 'render'
+        'link-preview-render' => '$refresh'
     ];
 
     public function render()

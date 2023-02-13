@@ -5,7 +5,7 @@
         <form wire:submit.prevent="update">
             <div class="row">
                 <div class="col-10">
-                    <input type="text" class="form-control rounded-4 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model="title">
+                    <input type="text" class="form-control rounded-3 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model="title">
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div class="col-10">
-                    <input type="text" class="form-control rounded-4 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model="url">
+                    <input type="text" class="form-control rounded-3 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model="url">
                     @error('url')
                         <div class="invalid-feedback">
                             {{ $message }}

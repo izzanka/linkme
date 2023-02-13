@@ -5,7 +5,7 @@
             </div>
         </div>
 
-        <div x-show="open">
+        <div x-show="open" x-transition>
             @livewire('user.link.link-edit')
         </div>
 
