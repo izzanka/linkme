@@ -41,7 +41,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-4">
-                                                <span class="avatar avatar-md rounded-circle" style="background-image: url({{ $user->getFirstMediaUrl('user','thumb') }})"></span>
+                                                <span class="avatar avatar-md rounded-circle border border-dark" style="background-image: url({{ $user->getFirstMediaUrl('user','thumb') }})"></span>
                                             </div>
                                             <div class="col-8">
                                                 <h3>{{ $user->username }}</h3>

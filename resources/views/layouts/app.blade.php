@@ -58,7 +58,7 @@
                 @else
                     <div class="nav-item d-none d-md-flex me-3">
                         <div class="btn-list">
-                        <a href="{{ route('links') }}" class="btn rounded-4 {{ request()->route()->named('links') ? 'active' : ''}}">
+                        <a href="{{ route('links.index') }}" class="btn rounded-4 {{ request()->route()->named('links.index') ? 'active' : ''}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-unlink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
@@ -70,7 +70,7 @@
                              </svg>
                             Links
                         </a>
-                        <a href="" class="btn rounded-4">
+                        <a href="{{ route('appearances.index') }}" class="btn rounded-4 {{ request()->route()->named('appearances.index') ? 'active' : ''}}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown">
-                        <span class="avatar avatar-sm rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
+                        <span class="border border-dark avatar avatar-sm rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                             <span class="dropdown-header">Account</span>
@@ -169,13 +169,8 @@
                     <li class="list-inline-item">
                       Copyright &copy; 2023
                       <a href=".." class="link-secondary">LinkMe</a>.
-                      All rights reserved.
                     </li>
-                    <li class="list-inline-item">
-                      <a href="../changelog.html" class="link-secondary" rel="noopener">
-                        v2
-                      </a>
-                    </li>
+
                   </ul>
                 </div>
               </div>

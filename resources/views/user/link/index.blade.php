@@ -64,9 +64,7 @@
                 </div>
             </div> --}}
             <div class="col-5">
-                <livewire:user.link.link-preview/>
-
-
+                <livewire:user.link.link-preview :appearance="$appearance"/>
             </div>
         </div>
 
