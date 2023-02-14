@@ -16,8 +16,11 @@
             </div>
 
             <div class="col-1">
-
+                <div class="d-flex" style="height: 100%">
+                    <div class="vr"></div>
+                </div>
             </div>
+
             <div class="col-5 mt-2">
                 <livewire:user.link.link-preview :appearance="$appearance"/>
             </div>

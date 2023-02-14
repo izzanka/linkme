@@ -27,7 +27,7 @@
                 <form wire:submit.prevent="store" >
                     <div class="row">
                         <div class="col-10">
-                            <input type="text" class="form-control rounded-3 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model="title">
+                            <input type="text" class="form-control rounded-3 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model.lazy="title">
                             @error('title')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -37,7 +37,7 @@
                     </div>
                     <div class="row">
                         <div class="col-10">
-                            <input type="text" class="form-control rounded-3 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model="url">
+                            <input type="text" class="form-control rounded-3 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model.lazy="url">
                             @error('url')
                                 <div class="invalid-feedback">
                                     {{ $message }}

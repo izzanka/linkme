@@ -1,6 +1,6 @@
 <div class="mt-4" x-data="{open: false}">
         <div class="text-center">
-            <div wire:loading wire:target="updateStatus, delete, update">
+            <div wire:loading.delay.longer wire:target="updateStatus, delete, update">
                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
             </div>
         </div>

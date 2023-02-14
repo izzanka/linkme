@@ -56,13 +56,12 @@
                 <livewire:user.link.link-create/>
                 <livewire:user.link.link-index/>
             </div>
+
             <div class="col-1">
-            </div>
-            {{-- <div class="col-2">
                 <div class="d-flex" style="height: 100%">
                     <div class="vr"></div>
                 </div>
-            </div> --}}
+            </div>
             <div class="col-5">
                 <livewire:user.link.link-preview :appearance="$appearance"/>
             </div>
