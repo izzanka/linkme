@@ -47,7 +47,7 @@ class SignUp extends Component
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('links.index');
     }
 
     public function render()
