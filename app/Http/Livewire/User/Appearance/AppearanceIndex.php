@@ -20,12 +20,12 @@ class AppearanceIndex extends Component
     }
 
     protected $rules = [
-        'background_color' => '',
-        'button_color' => '',
-        'button_font_color' => '',
-        'button_fill' => '',
-        'button_outline' => '',
-        'font_color' => '',
+        'background_color' => 'required|size:7|starts_with:#',
+        'button_color' => 'required|size:7|starts_with:#',
+        'button_font_color' => 'required|size:7|starts_with:#',
+        'button_fill' => 'required|size:7|starts_with:#',
+        'button_outline' => 'required|size:7|starts_with:#',
+        'font_color' => 'required|size:7|starts_with:#',
     ];
 
     public function updated($propertyName)
@@ -36,10 +36,31 @@ class AppearanceIndex extends Component
             'background_color' => $this->background_color,
             'button_color' => $this->button_color,
             'button_font_color' => $this->button_font_color,
-            'button_fill' => $this->button_fill,
-            'button_outline' => $this->button_outline,
             'font_color' => $this->font_color,
         ]);
+
+        $this->emit('link-preview-render');
+    }
+
+    public function updateButton($type, $rounded)
+    {
+        if($type == 'outline')
+        {
+            auth()->user()->appearance()->update([
+                'button_fill' => false,
+                'button_outline' => true,
+                'button_rounded' => $rounded
+            ]);
+
+        }else if($type == 'fill')
+        {
+            auth()->user()->appearance()->update([
+                'button_fill' => true,
+                'button_outline' => false,
+                'button_rounded' => $rounded
+            ]);
+
+        }
 
         $this->emit('link-preview-render');
 
