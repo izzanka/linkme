@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('button_font_color', 7)->default("#000000");
             $table->boolean('button_fill')->default(false);
             $table->boolean('button_outline')->default(false);
+            $table->string('button_rounded', 5)->default('2');
             $table->string('font_color', 7)->default("#000000");
             $table->timestamps();
         });
