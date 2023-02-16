@@ -16,7 +16,7 @@ class Search extends Component
     public function render()
     {
         return view('livewire.user.search', [
-            'users' => User::select('id','username','username_slug','credential')->where('username', 'like', '%'.$this->search.'%')->latest()->get(),
+            'users' => User::select('id','username','username_slug','bio')->where('username', 'like', '%'.$this->search.'%')->latest()->get(),
         ]);
     }
 }

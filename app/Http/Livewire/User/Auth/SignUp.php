@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User\Auth;
 use App\Http\Requests\User\Auth\SignUpRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,9 +14,9 @@ class SignUp extends Component
 {
     use WithFileUploads;
 
-    public $username, $email, $password, $image, $credential;
+    public $username, $email, $password, $image, $bio;
 
-    public function rules()
+    protected function rules()
     {
         return (new SignUpRequest)->rules();
     }
@@ -29,25 +30,35 @@ class SignUp extends Component
     {
         $this->validate();
 
-        $user = User::create([
-            'username' => $this->username,
-            'username_slug' => Str::slug($this->username),
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-            'credential' => $this->credential,
-        ]);
+        try {
 
-        $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
+            DB::transaction(function()
+            {
+                $user = User::create([
+                    'username' => $this->username,
+                    'username_slug' => Str::slug($this->username),
+                    'email' => $this->email,
+                    'password' => bcrypt($this->password),
+                    'bio' => $this->bio,
+                ]);
 
-        // Appearance::create([
-        //     'user_id' => $user->id
-        // ]);
+                if($this->image != null){
+                    $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
+                }
 
-        $user->appearance()->create();
+                $url = 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true';
+                $user->addMediaFromUrl($url)->toMediaCollection('user');
 
-        Auth::login($user);
+                $user->appearance()->create();
 
-        return redirect()->route('links.index');
+                Auth::login($user);
+
+                return redirect()->route('links.index');
+            });
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
     }
 
     public function render()

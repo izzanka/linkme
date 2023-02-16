@@ -8,15 +8,28 @@ use Livewire\Component;
 class LinkIndex extends Component
 {
     public $status, $title, $url;
+    public $editTitle, $editUrl, $editLink = false;
 
     protected $listeners = [
-        'link-index-render' => '$refresh'
+        'link-index-refresh' => '$refresh'
     ];
 
-    public function mount()
+    public function resetEdit()
     {
+        $this->reset(['editTitle','editUrl']);
+    }
 
+    public function edit($linkId)
+    {
+        try {
+            $link = Link::find($linkId);
+            $this->editTitle = $link->title;
+            $this->editUrl = $link->url;
+            $this->editLink = true;
 
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     public function delete($linkId)
@@ -25,8 +38,9 @@ class LinkIndex extends Component
             $link = Link::find($linkId);
             $link->delete();
 
-            $this->emit('link-preview-render');
-            $this->emit('link-create-render');
+            $this->emit('link-preview-refresh');
+            $this->emit('link-create-refresh');
+            $this->emit('link-create-updateTotalLinks');
 
         } catch (\Throwable $th) {
 
@@ -44,11 +58,12 @@ class LinkIndex extends Component
         try {
 
             $link = Link::find($linkId);
+
             $link->update([
                 'active' => $this->status,
             ]);
 
-            $this->emit('link-preview-render');
+            $this->emit('link-preview-refresh');
 
         } catch (\Throwable $th) {
             //throw $th;

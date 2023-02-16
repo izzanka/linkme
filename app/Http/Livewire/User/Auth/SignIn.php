@@ -8,9 +8,9 @@ use Livewire\Component;
 
 class SignIn extends Component
 {
-    public $email, $password, $remember = false;
+    public $email, $password, $remember_me = false;
 
-    public function rules()
+    protected function rules()
     {
         return (new SignInRequest)->rules();
     }
@@ -24,14 +24,12 @@ class SignIn extends Component
     {
         $this->validate();
 
-        if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember))
+        if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember_me))
         {
             return redirect()->route('links.index');
         }
 
         session()->flash('message', 'Username or password is wrong!');
-
-        // return redirect()->route('sign-in');
     }
 
     public function render()

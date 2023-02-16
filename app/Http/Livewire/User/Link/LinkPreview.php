@@ -9,13 +9,13 @@ class LinkPreview extends Component
     public $appearance;
 
     protected $listeners = [
-        'link-preview-render' => '$refresh'
+        'link-preview-refresh' => '$refresh'
     ];
 
     public function render()
     {
         return view('livewire.user.link.link-preview',[
-            'links' => auth()->user()->links()->where('active', true)->orderBy('updated_at')->get(),
+            'links' => auth()->user()->links()->where('active', true)->orderBy('created_at')->get(),
         ]);
     }
 }

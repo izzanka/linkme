@@ -10,7 +10,7 @@ class ProfileIndex extends Component
 {
     use WithFileUploads;
 
-    public $username, $credential, $image;
+    public $username, $bio, $image;
 
     public function rules()
     {
@@ -23,10 +23,10 @@ class ProfileIndex extends Component
 
         auth()->user()->update([
             'username' => $this->username,
-            'credential' => $this->credential,
+            'bio' => $this->bio,
         ]);
 
-        $this->emit('link-preview-render');
+        $this->emit('link-preview-refresh');
     }
 
     public function updateImage()
@@ -39,7 +39,9 @@ class ProfileIndex extends Component
 
         auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
 
-        $this->emit('link-preview-render');
+        $this->emit('link-preview-refresh');
+        $this->emit('profile-navbar-refresh');
+
     }
 
     public function render()

@@ -26,7 +26,7 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'username' => ['required', 'min:5', 'max:25', 'string', Rule::unique('users')->ignore(auth()->id())],
-            'credential' => ['string','max:25'],
+            'bio' => ['nullable','string','max:25'],
         ];
     }
 }

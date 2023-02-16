@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User\Appearance;
 
+use App\Http\Requests\User\Appearance\UpdateRequest;
 use App\Models\Appearance;
 use Livewire\Component;
 
@@ -19,53 +20,53 @@ class AppearanceIndex extends Component
         $this->font_color = $appearance->font_color;
     }
 
-    protected $rules = [
-        'background_color' => 'required|size:7|starts_with:#',
-        'button_color' => 'required|size:7|starts_with:#',
-        'button_font_color' => 'required|size:7|starts_with:#',
-        'button_fill' => 'required|size:7|starts_with:#',
-        'button_outline' => 'required|size:7|starts_with:#',
-        'font_color' => 'required|size:7|starts_with:#',
-    ];
+    protected function rules()
+    {
+        return (new UpdateRequest)->rules();
+    }
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
 
-        auth()->user()->appearance()->update([
-            'background_color' => $this->background_color,
-            'button_color' => $this->button_color,
-            'button_font_color' => $this->button_font_color,
-            'font_color' => $this->font_color,
-        ]);
+        try {
 
-        $this->emit('link-preview-render');
+            auth()->user()->appearance()->update([
+                'background_color' => $this->background_color,
+                'button_color' => $this->button_color,
+                'button_font_color' => $this->button_font_color,
+                'font_color' => $this->font_color,
+            ]);
+
+            $this->emit('link-preview-refresh');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
     }
 
     public function updateButton($type, $rounded)
     {
-        if($type == 'outline')
+        if($type != "outline" || $type != "fill")
         {
-            auth()->user()->appearance()->update([
-                'button_fill' => false,
-                'button_outline' => true,
-                'button_rounded' => $rounded
-            ]);
-
-        }else if($type == 'fill')
-        {
-            auth()->user()->appearance()->update([
-                'button_fill' => true,
-                'button_outline' => false,
-                'button_rounded' => $rounded
-            ]);
-
+            session()->flash('message', 'Something wrong! please try again later.');
         }
 
-        $this->emit('link-preview-render');
+        try {
+
+            auth()->user()->appearance()->update([
+                'button_fill' => $type == "fill" ? true : false,
+                'button_outline' => $type == "fill" ? false : true,
+                'button_rounded' => $rounded
+            ]);
+
+            $this->emit('link-preview-refresh');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
 
     }
-
 
     public function render()
     {

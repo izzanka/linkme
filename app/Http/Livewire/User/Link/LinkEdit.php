@@ -7,11 +7,10 @@ use Livewire\Component;
 
 class LinkEdit extends Component
 {
-    public $linkId;
-    public $title;
-    public $url;
+    public $linkId, $title, $url;
 
     protected $listeners = [
+        'link-edit-refresh' => '$refresh',
         'link-edit' => 'edit'
     ];
 
@@ -24,14 +23,6 @@ class LinkEdit extends Component
     {
         $this->validateOnly($propertyName);
     }
-
-    public function edit($linkId, $title, $url)
-    {
-        $this->linkId = $linkId;
-        $this->title = $title;
-        $this->url = $url;
-    }
-
     public function update()
     {
         try {
@@ -45,8 +36,10 @@ class LinkEdit extends Component
             ]);
 
             $this->reset(['title','url']);
-            $this->emit('link-index-render');
-            $this->emit('link-preview-render');
+
+            $this->emit('link-index-refresh');
+            $this->emit('link-preview-refresh');
+            $this->emit('link-create-updateTotalLinks');
 
         } catch (\Throwable $th) {
             //throw $th;
