@@ -5,11 +5,55 @@
             </div>
         </div>
 
+        @if ($editLink)
         <div x-show="open" x-transition>
-            @livewire('user.link.link-edit')
+            {{-- <livewire:user.link.link-edit /> --}}
+            <div class="card rounded-4">
+                <div class="card-body" @click.outside="open = false">
+                    <a class="btn-close float-end" @click="open = false" wire:click="resetEdit"></a>
+                    <label class="form-label"><b>Edit Link</b></label>
+                    <form wire:submit.prevent="update">
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" class="form-control rounded-3 mt-3 @error('editTitle') is-invalid @enderror" placeholder="Title*" wire:model="editTitle">
+                                @error('editTitle')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" class="form-control rounded-3 mt-3 @error('editUrl') is-invalid @enderror" placeholder="URL*" wire:model="editUrl">
+                                @error('editUrl')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-2 mt-3 mb-3">
+                                <button class="btn btn-purple rounded-4" type="submit" @if ($errors->any())
+                                    disabled
+                                @endif @click.debounce.500ms="open = false">
+                                    <div wire:loading wire:target="update">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                    </div>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
         </div>
+        @endif
+
 
         @foreach($links as $link)
+
         <div class="card mt-3 rounded-4">
             <div class="card-body">
                 <div class="row">
@@ -55,7 +99,7 @@
                         </div>
                     </div>
                     <div class="col-1">
-                        <a href="#" class="text-dark" @click="open = true" wire:click.prevent="$emit('link-edit', '{{ $link->id }}','{{ $link->title }}','{{ $link->url }}')">
+                        <a href="#" class="text-dark" @click="open = true" wire:click.prevent="edit({{ $link->id }})">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>

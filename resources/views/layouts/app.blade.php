@@ -86,66 +86,61 @@
                              </svg>
                             Settings
                         </a>
-                        <a href="" class="btn rounded-4" data-bs-toggle="dropdown">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                                <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                                <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                                <path d="M8.7 10.7l6.6 -3.4"></path>
-                                <path d="M8.7 13.3l6.6 3.4"></path>
-                             </svg>
-                            Share
-                        </a>
+                        <div class="nav-item dropdown">
+                            <a href="" class="btn rounded-4" data-bs-toggle="dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                    <path d="M8.7 10.7l6.6 -3.4"></path>
+                                    <path d="M8.7 13.3l6.6 3.4"></path>
+                                 </svg>
+                                Share
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <span class="dropdown-header">Share your LinkMe</span>
+                                <a class="dropdown-item" href="{{ route('users.show', auth()->user()->username_slug) }}" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                                        <path d="M3.6 9l16.8 0"></path>
+                                        <path d="M3.6 15l16.8 0"></path>
+                                        <path d="M11.5 3a17 17 0 0 0 0 18"></path>
+                                        <path d="M12.5 3a17 17 0 0 1 0 18"></path>
+                                     </svg>
+                                    Open my LinkMe
+                                </a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="copy()" id="copyLink" data-attr="{{ auth()->user()->username }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path>
+                                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2"></path>
+                                     </svg>
+                                    Copy my LinkMe
+                                </a>
+                                <script>
+                                    function copy() {
+                                        let dummy = document.createElement('input');
+                                        let target = document.getElementById('copyLink');
+                                        let href = target.getAttribute('data-attr');
+                                        let text = '127.0.0.1:8000/' + href;
+                                        document.body.appendChild(dummy);
+                                        dummy.value = text;
+                                        dummy.select();
+                                        document.execCommand('copy');
+                                        document.body.removeChild(dummy);
+                                        alert('Link copied to clipboard');
+                                    }
+                                </script>
+                            </div>
+                        </div>
+
 
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown">
-                        <span class="border border-dark avatar avatar-sm rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                            <span class="dropdown-header">Account</span>
-                            <a class="dropdown-item" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M12 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                 </svg>
-                                {{ auth()->user()->username }}
-                                </a>
-                                <a class="dropdown-item disabled" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path>
-                                        <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path>
-                                     </svg>
-                                    linkme.ferdirns.com/{{ auth()->user()->username_slug }}
-                                    </a>
-                                <a class="dropdown-item" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-                                        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                        <path d="M19 7l0 3"></path>
-                                        <path d="M19 14l0 .01"></path>
-                                    </svg>
-                                    My Account
-                                </a>
-                            <span class="dropdown-header">Support</span>
-                                <a href="{{ route('sign-out') }}" onclick="event.preventDefault();
-                                document.getElementById('signout-form').submit();" class="dropdown-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
-                                    <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
-                                 </svg>
-                                Sign out
-                            </a>
-                            <form id="signout-form" action="{{ route('sign-out') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                        <livewire:user.profile.profile-navbar/>
                     </div>
                 @endguest
             </div>

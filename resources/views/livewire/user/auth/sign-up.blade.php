@@ -35,9 +35,9 @@
                       </div>
 
                     <div class="mb-3">
-                        <label class="form-label required">Credential (Job / Title / Status)</label>
-                        <input type="text" class="form-control rounded-3 @error('credential') is-invalid @enderror" placeholder="Enter credential" wire:model.lazy="credential">
-                        @error('credential')
+                        <label class="form-label">Bio (Job / Title / Status)</label>
+                        <input type="text" class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Enter bio" wire:model.lazy="bio">
+                        @error('bio')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -58,7 +58,7 @@
                     @endif
 
                     <div class="mb-3">
-                        <label class="form-label required">Profile Image</label>
+                        <label class="form-label">Profile Image</label>
                         <input type="file" class="form-control rounded-3 @error('image') is-invalid @enderror" wire:model.lazy="image">
                         @error('image')
                             <div class="invalid-feedback">

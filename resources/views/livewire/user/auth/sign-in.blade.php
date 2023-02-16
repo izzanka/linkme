@@ -49,7 +49,7 @@
             </div>
             <div class="mb-2">
               <label class="form-check">
-                <input type="checkbox" value="1" class="form-check-input"/>
+                <input type="checkbox" value="1" class="form-check-input" wire:model="remember_me"/>
                 <span class="form-check-label">Remember me on this device</span>
               </label>
             </div>

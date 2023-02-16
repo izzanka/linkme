@@ -39,15 +39,15 @@
 
                     @foreach($users as $user)
                         <div class="card rounded-4 bg-light border border-dark mt-3">
-                            <a href="" class="text-dark" style="text-decoration: none">
+                            <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-2">
-                                        <span class="avatar avatar-lg rounded-circle" style="background-image: url({{ $user->getFirstMediaUrl('user','thumb') }})"></span>
+                                        <span class="border border-secondary avatar avatar-lg rounded-circle" style="background-image: url({{ $user->getFirstMediaUrl('user','thumb') }})"></span>
                                     </div>
                                     <div class="col-10">
                                         <h2>{{ $user->username }}</h2>
-                                        <h4 class="text-secondary">{{ $user->credential }}</h4>
+                                        <h4>{{ $user->credential }}</h4>
                                     </div>
                                 </div>
                             </div>

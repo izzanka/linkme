@@ -1,6 +1,6 @@
 <div>
     <h2><b>Profile</b>
-        <div wire:loading wire:target="username, credential">
+        <div wire:loading wire:target="username, bio">
             <span class="spinner-border spinner-border-sm ml-2" role="status"></span>
         </div>
     </h2>
@@ -10,7 +10,7 @@
             <form wire:submit.prevent="updateImage">
                 <div class="row">
                     <div class="col-3 mt-2">
-                        <span class="border border-dark avatar avatar-xl rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
+                        <span class="border border-secondary avatar avatar-xl rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
                     </div>
                     <div class="col-9 mt-2">
                         <div wire:loading wire:target="image">
@@ -26,7 +26,7 @@
                                 </div>
                             @enderror
                         <div class="d-grid gap-2 mt-2">
-                            <button class="btn btn-purple rounded-4" type="submit">Update</button>
+                            <button class="btn btn-purple rounded-4" type="submit">Update profile image</button>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
             <div class="row mt-4 mb-3">
                 <div class="row">
-                    <input type="text" class="form-control rounded-3 @error('username') is-invalid @enderror" wire:model.lazy="username">
+                    <input type="text" class="form-control rounded-3 @error('username') is-invalid @enderror" placeholder="Username"  wire:model.lazy="username">
                     @error('username')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -42,8 +42,8 @@
                     @enderror
                 </div>
                 <div class="row mt-2">
-                    <input type="text" class="form-control rounded-3 @error('credential') is-invalid @enderror" wire:model.lazy="credential">
-                    @error('credential')
+                    <input type="text" class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Bio" wire:model.lazy="bio">
+                    @error('bio')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
