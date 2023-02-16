@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('username', 25)->unique();
             $table->string('username_slug');
-            $table->string('credential', 25)->nullable();
+            $table->string('bio', 25)->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('background_color', 7)->default('#FFFFFF');
-            $table->string('text_color', 7)->default("#000000");
             $table->bigInteger('views')->unsigned()->default(0)->index();
             $table->rememberToken();
             $table->timestamps();

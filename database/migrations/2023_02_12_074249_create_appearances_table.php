@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('background_color', 7)->default("#FFFFFF");
-            $table->string('button_color',7)->default("#FFFFFF");
+            $table->string('button_color',7)->default("#000000");
             $table->string('button_font_color', 7)->default("#000000");
             $table->boolean('button_fill')->default(false);
             $table->boolean('button_outline')->default(false);
