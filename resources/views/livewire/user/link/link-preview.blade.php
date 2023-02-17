@@ -27,15 +27,24 @@
                     </div>
                     <div class="row mt-3">
                         @foreach ($links as $link)
-                            <a href="{{ $link->url }}">
-                                <div class="card btn mt-3 text-nowrap rounded-{{ $appearance->button_rounded }}" style="width:400px; height:60px; @if ($appearance->button_outline == true) border-color: {{ $appearance->button_color }}  @else background-color: {{ $appearance->button_color }} @endif">
-                                    <div class="card-body">
-                                        <h4 style="color: {{ $appearance->button_font_color }}">
-                                            {{ $link->title }}
-                                        </h4>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-8">
+                            <div class="d-grid">
+                                <a href="{{ $link->url }}" target="_blank" class="mt-3 btn btn-lg text-nowrap rounded-{{ $appearance->button_rounded }}" style="@if ($appearance->button_outline == true) border-color: {{ $appearance->button_color }}  @else background-color: {{ $appearance->button_color }} @endif">
+
+                                    <h4 style="color: {{ $appearance->button_font_color }}" class="mt-2 mb-2">
+                                        {{ $link->title }}
+                                    </h4>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-2">
+
+                        </div>
                         @endforeach
                     </div>
                     <div class="row mt-5">

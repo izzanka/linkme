@@ -24,8 +24,8 @@ class LinkRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required','string','max:25'],
-            'url' => ['required','url'],
+            'title' => ['required','string','max:15'],
+            'url' => ['required','url','max:255'],
         ];
     }
 }

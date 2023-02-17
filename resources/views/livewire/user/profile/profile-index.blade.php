@@ -19,7 +19,7 @@
                                 Uploading image...
                             </div>
                         </div>
-                        <input type="file" class="form-control rounded-4 @error('image') is-invalid @enderror" wire:model.lazy="image">
+                        <input type="file" class="form-control rounded-3 @error('image') is-invalid @enderror" wire:model.lazy="image">
                             @error('image')
                                 <div class="invalid-feedback">
                                     {{ $message }}
