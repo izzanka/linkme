@@ -10,6 +10,11 @@ class Link extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function incrementClicksCount()
+    {
+        $this->increment('clicks');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

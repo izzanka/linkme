@@ -27,7 +27,7 @@
                     <b>Completely customize your LinkMe profile. Change your background with colors, gradients and images. Choose a button style, change the typeface and more.</b>
                 </h3>
 
-                <livewire:user.appearance.appearance-index :appearance="$appearance"/>
+                <livewire:user.appearance.appearance-index :appearance="auth()->user()->appearance->id"/>
             </div>
 
             <div class="col-1">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="col-5 mt-2">
-                <livewire:user.link.link-preview :appearance="$appearance"/>
+                <livewire:user.link.link-preview :appearance="auth()->user()->appearance"/>
             </div>
         </div>
 

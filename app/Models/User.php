@@ -31,9 +31,15 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Appearance::class);
     }
 
+    public function incrementViewsCount()
+    {
+        $this->increment('views');
+    }
+
     public function getRouteKeyName()
     {
         return 'username_slug';
     }
+
 
 }

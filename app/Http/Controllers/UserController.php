@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function show(User $user)
     {
-        $user->load('links','appearance');
+        $user->load(['links' => fn($query) => $query->where('active', true),'appearance']);
         return view('show', compact('user'));
     }
 }

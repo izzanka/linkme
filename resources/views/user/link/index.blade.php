@@ -62,7 +62,7 @@
             </div>
 
             <div class="col-5">
-                <livewire:user.link.link-preview :appearance="$appearance"/>
+                <livewire:user.link.link-preview :appearance="auth()->user()->appearance"/>
             </div>
         </div>
 
