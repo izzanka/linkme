@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Link;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class LinkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => ['required','string','max:25'],
-            'url' => ['required','url']
+            'url' => ['required','url'],
         ];
     }
 }
