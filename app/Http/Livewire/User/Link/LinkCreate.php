@@ -2,14 +2,12 @@
 
 namespace App\Http\Livewire\User\Link;
 
-use App\Http\Requests\User\Link\CreateRequest;
+use App\Http\Requests\User\LinkRequest;
 use Livewire\Component;
 
 class LinkCreate extends Component
 {
-    public $url, $title, $disabled = false;
-
-    public $valid = ['url' => false, 'title' => false];
+    public $url, $title;
 
     protected $listeners = [
         'link-create-refresh' => '$refresh',
@@ -17,25 +15,12 @@ class LinkCreate extends Component
 
     protected function rules()
     {
-        return (new CreateRequest)->rules();
+        return (new LinkRequest)->rules();
     }
 
     public function updated($propertyName)
     {
-        $this->disabled = true;
-        $this->valid[$propertyName] = false;
-
         $this->validateOnly($propertyName);
-
-        $this->valid[$propertyName] = true;
-        $this->disabled = false;
-
-        foreach($this->valid as $property){
-            if(!$property){
-                $this->disabled = true;
-                break;
-            }
-        }
     }
 
     public function store()

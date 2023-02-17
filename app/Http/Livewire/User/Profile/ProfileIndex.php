@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\User\Profile;
 
-use App\Http\Requests\User\Profile\UpdateProfileRequest;
+use App\Http\Requests\User\ProfileRequest;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -14,7 +14,7 @@ class ProfileIndex extends Component
 
     public function rules()
     {
-        return (new UpdateProfileRequest)->rules();
+        return (new ProfileRequest)->rules();
     }
 
     public function updated($propertyName)
@@ -27,12 +27,13 @@ class ProfileIndex extends Component
         ]);
 
         $this->emit('link-preview-refresh');
+        $this->emit('profile-navbar-refresh');
     }
 
     public function updateImage()
     {
         $this->validate([
-            'image' => 'required|max:2048',
+            'image' => 'required|max:2048|image',
         ]);
 
         auth()->user()->media()->delete();

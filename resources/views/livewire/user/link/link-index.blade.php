@@ -15,8 +15,8 @@
                     <form wire:submit.prevent="update">
                         <div class="row">
                             <div class="col-10">
-                                <input type="text" class="form-control rounded-3 mt-3 @error('editTitle') is-invalid @enderror" placeholder="Title*" wire:model="editTitle">
-                                @error('editTitle')
+                                <input type="text" class="form-control rounded-3 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model="title">
+                                @error('title')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -25,17 +25,15 @@
                         </div>
                         <div class="row">
                             <div class="col-10">
-                                <input type="text" class="form-control rounded-3 mt-3 @error('editUrl') is-invalid @enderror" placeholder="URL*" wire:model="editUrl">
-                                @error('editUrl')
+                                <input type="text" class="form-control rounded-3 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model="url">
+                                @error('url')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-2 mt-3 mb-3">
-                                <button class="btn btn-purple rounded-4" type="submit" @if ($errors->any())
-                                    disabled
-                                @endif @click.debounce.500ms="open = false">
+                                <button class="btn btn-purple rounded-4" type="submit" @click.debounce.500ms="open = false">
                                     <div wire:loading wire:target="update">
                                         <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                                     </div>

@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function show(User $user)
     {
-        $user->load(['links','appearance']);
+        $user->load('links','appearance');
         return view('show', compact('user'));
     }
 }

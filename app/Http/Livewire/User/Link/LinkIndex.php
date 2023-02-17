@@ -2,33 +2,40 @@
 
 namespace App\Http\Livewire\User\Link;
 
+use App\Http\Requests\User\LinkRequest;
 use App\Models\Link;
 use Livewire\Component;
 
 class LinkIndex extends Component
 {
-    public $status, $title, $url;
-    public $editTitle, $editUrl, $editLink = false;
+    public $linkId, $status, $title, $url, $editLink = false;
 
     protected $listeners = [
         'link-index-refresh' => '$refresh'
     ];
 
+    protected function rules()
+    {
+        return (new LinkRequest)->rules();
+    }
+
     public function resetEdit()
     {
-        $this->reset(['editTitle','editUrl']);
+        $this->reset(['title','url']);
     }
 
     public function edit($linkId)
     {
         try {
+
             $link = Link::find($linkId);
-            $this->editTitle = $link->title;
-            $this->editUrl = $link->url;
+            $this->linkId = $link->id;
+            $this->title = $link->title;
+            $this->url = $link->url;
             $this->editLink = true;
 
         } catch (\Throwable $th) {
-            //throw $th;
+            session()->flash('message', 'Something wrong! please try again later.');
         }
     }
 
@@ -40,20 +47,15 @@ class LinkIndex extends Component
 
             $this->emit('link-preview-refresh');
             $this->emit('link-create-refresh');
-            $this->emit('link-create-updateTotalLinks');
 
         } catch (\Throwable $th) {
-
+            session()->flash('message', 'Something wrong! please try again later.');
         }
     }
 
     public function updateStatus($status, $linkId)
     {
-        if($status == false){
-            $this->status = true;
-        }else{
-            $this->status = false;
-        }
+        $status == false ? $this->status = true : $this->status = false;
 
         try {
 
@@ -66,13 +68,30 @@ class LinkIndex extends Component
             $this->emit('link-preview-refresh');
 
         } catch (\Throwable $th) {
-            //throw $th;
+            session()->flash('message', 'Something wrong! please try again later.');
         }
     }
 
     public function update()
     {
+        try {
+            $this->validate();
 
+            $link = Link::find($this->linkId);
+
+            $link->update([
+                'title' => $this->title,
+                'url' => $this->url,
+            ]);
+
+            $this->reset(['title','url']);
+
+            $this->emit('link-index-refresh');
+            $this->emit('link-preview-refresh');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
     }
 
     public function render()

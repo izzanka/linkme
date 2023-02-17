@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User\Link;
 
+use App\Http\Requests\User\LinkRequest;
 use App\Models\Link;
 use Livewire\Component;
 
@@ -11,38 +12,37 @@ class LinkEdit extends Component
 
     protected $listeners = [
         'link-edit-refresh' => '$refresh',
-        'link-edit' => 'edit'
     ];
 
-    protected $rules = [
-        'title' => 'required|string|max:25',
-        'url' => 'required|url'
-    ];
+    protected function rules()
+    {
+        return (new LinkRequest)->rules();
+    }
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
     }
+
     public function update()
     {
         try {
-            $link = Link::find($this->linkId);
-
             $this->validate();
+
+            $link = Link::find($this->linkId);
 
             $link->update([
                 'title' => $this->title,
-                'url' => $this->url
+                'url' => $this->url,
             ]);
 
             $this->reset(['title','url']);
 
             $this->emit('link-index-refresh');
             $this->emit('link-preview-refresh');
-            $this->emit('link-create-updateTotalLinks');
 
         } catch (\Throwable $th) {
-            //throw $th;
+            session()->flash('message', 'Something wrong! please try again later.');
         }
     }
 

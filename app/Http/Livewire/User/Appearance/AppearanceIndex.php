@@ -2,8 +2,7 @@
 
 namespace App\Http\Livewire\User\Appearance;
 
-use App\Http\Requests\User\Appearance\UpdateRequest;
-use App\Models\Appearance;
+use App\Http\Requests\User\AppearanceRequest;
 use Livewire\Component;
 
 class AppearanceIndex extends Component
@@ -22,7 +21,7 @@ class AppearanceIndex extends Component
 
     protected function rules()
     {
-        return (new UpdateRequest)->rules();
+        return (new AppearanceRequest)->rules();
     }
 
     public function updated($propertyName)
@@ -45,9 +44,12 @@ class AppearanceIndex extends Component
         }
     }
 
-    public function updateButton($type, $rounded)
+    public function updateButton($button_type, $button_rounded_size)
     {
-        if($type != "outline" || $type != "fill")
+        $button_types = ['fill','outline'];
+        $button_rounded_sizes = ['0','4','pill'];
+
+        if(!in_array($button_type, $button_types) || !in_array($button_rounded_size, $button_rounded_sizes))
         {
             session()->flash('message', 'Something wrong! please try again later.');
         }
@@ -55,9 +57,9 @@ class AppearanceIndex extends Component
         try {
 
             auth()->user()->appearance()->update([
-                'button_fill' => $type == "fill" ? true : false,
-                'button_outline' => $type == "fill" ? false : true,
-                'button_rounded' => $rounded
+                'button_fill' => $button_type == "fill" ? true : false,
+                'button_outline' => $button_type == "fill" ? false : true,
+                'button_rounded' => $button_rounded_size,
             ]);
 
             $this->emit('link-preview-refresh');
