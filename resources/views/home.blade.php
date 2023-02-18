@@ -14,7 +14,7 @@
 
             </div>
             <div class="col-6 mt-4 text-center mb-4">
-                <img src="{{ asset('storage/assets/preview.png') }}" class="rounded-4 bg-light border border-dark"alt="preview">
+                <img src="{{ asset('storage/assets/preview.png') }}" class="rounded-4 bg-light border border-dark" alt="preview" style="height: 600px">
             </div>
         </div>
 
@@ -33,7 +33,7 @@
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($users as $user)
                             <a target="_blank" href="{{ route('users.show', $user->username_slug) }}">
-                                <span class="avatar avatar-xl rounded-circle border border-secondary" style="background-image: url({{ $user->getFirstMediaUrl('user','thumb') }})"></span>
+                                <span class="avatar avatar-xl rounded-circle" style="background-image: url({{ $user->getFirstMediaUrl('users','thumb') }})"></span>
                             </a>
                         @endforeach
                     </marquee>

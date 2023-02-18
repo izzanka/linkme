@@ -42,12 +42,12 @@ class SignUp extends Component
                     'bio' => $this->bio,
                 ]);
 
-                if($this->image != null){
-                    $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
+                if($this->image == null){
+                    $url = 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true';
+                    $user->addMediaFromUrl($url)->toMediaCollection('users');
+                }else{
+                    $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('users');
                 }
-
-                $url = 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true';
-                $user->addMediaFromUrl($url)->toMediaCollection('user');
 
                 $user->appearance()->create();
 

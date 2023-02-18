@@ -21,7 +21,7 @@ class Show extends Component
 
         $this->username = $user->username;
         $this->bio = $user->bio;
-        $this->image = $user->getFirstMediaUrl('user','thumb');
+        $this->image = $user->getFirstMediaUrl('users','thumb');
 
         $this->links = $user->links->toArray();
 

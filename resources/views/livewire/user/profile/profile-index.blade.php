@@ -10,7 +10,7 @@
             <form wire:submit.prevent="updateProfileImage">
                 <div class="row">
                     <div class="col-3 mt-2">
-                        <span class="border border-secondary avatar avatar-xl rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
+                        <span class="avatar avatar-xl rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('users','thumb') }})"></span>
                     </div>
                     <div class="col-9 mt-2">
                         <div wire:loading wire:target="image">
@@ -47,7 +47,7 @@
                         @enderror
                     </div>
                     <div class="row mt-2">
-                        <input type="text" class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Bio" wire:model.lazy="bio">
+                        <textarea class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Bio" wire:model.lazy="bio"></textarea>
                         @error('bio')
                             <div class="invalid-feedback">
                                 {{ $message }}

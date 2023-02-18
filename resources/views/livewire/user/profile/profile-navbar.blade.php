@@ -1,6 +1,6 @@
 <div>
     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown">
-        <span class="border border-secondary avatar avatar-sm rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
+        <span class="avatar avatar-sm rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('users','thumb') }})"></span>
         </a>
     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
         <span class="dropdown-header">Account</span>

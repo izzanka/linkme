@@ -36,9 +36,9 @@ class ProfileIndex extends Component
             'image' => 'required|max:2048|image',
         ]);
 
-        auth()->user()->media()->delete();
+        auth()->user()->clearMediaCollection('users');
 
-        auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
+        auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('users');
 
         $this->reset(['image']);
         $this->iteration++;

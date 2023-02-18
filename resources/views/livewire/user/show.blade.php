@@ -1,7 +1,7 @@
 <div class="text-center">
-    <div class="row mt-5">
+    <div class="row mt-4">
         <div class="col-12">
-            <span class="avatar avatar-xl border border-secondary rounded-circle" style="background-image: url({{ $image }})"></span>
+            <span class="avatar avatar-xl rounded-circle" style="background-image: url({{ $image }})"></span>
         </div>
     </div>
     <div class="row mt-3">
@@ -51,7 +51,7 @@
         </div>
         @endforeach
     </div>
-    <div class="row mb-4 mt-5">
+    <div class="row mb-4 mt-4">
         <div class="col-12">
             <a href="{{ route('home') }}" class="text-dark"><h4>LinkMe</h4></a>
         </div>

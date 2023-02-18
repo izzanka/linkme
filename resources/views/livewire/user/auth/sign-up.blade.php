@@ -36,7 +36,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Bio (Job / Title / Status)</label>
-                        <input type="text" class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Enter bio" wire:model.lazy="bio">
+                        <textarea class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Enter bio" wire:model.lazy="bio"></textarea>
                         @error('bio')
                             <div class="invalid-feedback">
                                 {{ $message }}

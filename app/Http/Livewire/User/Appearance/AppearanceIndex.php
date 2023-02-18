@@ -68,7 +68,6 @@ class AppearanceIndex extends Component
         } catch (\Throwable $th) {
             session()->flash('message', 'Something wrong! please try again later.');
         }
-
     }
 
     public function render()

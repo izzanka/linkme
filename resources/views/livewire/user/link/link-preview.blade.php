@@ -8,7 +8,7 @@
                 <div class="text-center">
                     <div class="row mt-3">
                         <div class="col-12">
-                            <span class="avatar avatar-xl rounded-circle border border-secondary" style="background-image: url({{ auth()->user()->getFirstMediaUrl('user','thumb') }})"></span>
+                            <span class="avatar avatar-xl rounded-circle " style="background-image: url({{ auth()->user()->getFirstMediaUrl('users','thumb') }})"></span>
                         </div>
                     </div>
                     <div class="row mt-3">
