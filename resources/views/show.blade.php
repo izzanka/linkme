@@ -30,7 +30,7 @@
     </main>
     <div class="fixed-bottom">
         <div class="mb-4 text-center">
-            <a href="{{ route('home') }}" class="text-dark"><h4>LinkMe</h4></a>
+            <a href="{{ route('home') }}" style="color: {{ $user->appearance->font_color }}"><h4>LinkMe</h4></a>
         </div>
     </div>
     @livewireScripts

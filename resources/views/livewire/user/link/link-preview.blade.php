@@ -49,7 +49,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-12">
-                            <a href="{{ route('home') }}" class="text-dark"><h4>LinkMe</h4></a>
+                            <a href="{{ route('home') }}" style="color: {{ $appearance->font_color }}"><h4>LinkMe</h4></a>
                         </div>
                     </div>
                 </div>
