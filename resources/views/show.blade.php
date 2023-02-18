@@ -28,6 +28,11 @@
     <main>
         <livewire:user.show :user="$user"/>
     </main>
+    <div class="fixed-bottom">
+        <div class="mb-4 text-center">
+            <a href="{{ route('home') }}" class="text-dark"><h4>LinkMe</h4></a>
+        </div>
+    </div>
     @livewireScripts
 </body>
 

@@ -51,9 +51,9 @@
         </div>
         @endforeach
     </div>
-    <div class="row mt-5">
+    {{-- <div class="row mt-5">
         <div class="col-12">
             <a href="{{ route('home') }}" class="text-dark"><h4>LinkMe</h4></a>
         </div>
-    </div>
+    </div> --}}
 </div>
