@@ -10,7 +10,7 @@ class ProfileIndex extends Component
 {
     use WithFileUploads;
 
-    public $username, $bio, $image;
+    public $username, $bio, $image, $iteration;
 
     public function rules()
     {
@@ -30,7 +30,7 @@ class ProfileIndex extends Component
         $this->emit('profile-navbar-refresh');
     }
 
-    public function updateImage()
+    public function updateProfileImage()
     {
         $this->validate([
             'image' => 'required|max:2048|image',
@@ -40,9 +40,11 @@ class ProfileIndex extends Component
 
         auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('user');
 
+        $this->reset(['image']);
+        $this->iteration++;
+
         $this->emit('link-preview-refresh');
         $this->emit('profile-navbar-refresh');
-
     }
 
     public function render()

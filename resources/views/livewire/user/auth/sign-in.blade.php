@@ -54,7 +54,7 @@
               </label>
             </div>
             <div class="form-footer">
-              <button type="submit" class="btn btn-primary w-100 rounded-4">
+              <button type="submit" class="btn btn-primary w-100 rounded-4"  wire:loading.attr="disabled" wire:target="store">
                 <div wire:loading wire:target="store">
                     <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                 </div>

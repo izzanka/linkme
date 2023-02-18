@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-6" x-data="{open: false}">
-                <div class="card rounded-4">
+                <div class="card rounded-4" @click.outside="open = false">
                     <div class="card-body">
                         <b>Analytics</b>
                         <a href="#" class="text-dark">
