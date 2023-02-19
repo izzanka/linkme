@@ -11,7 +11,7 @@ a Linktree (https://linktr.ee) website clone
 
 ### BALL STACK
 * [**B**ootstrap](https://getbootstrap.com)
-* [**A**lpine.js](https://alpinejs.dev)
+* [**A**lpinejs](https://alpinejs.dev)
 * [**L**ivewire](https://laravel-livewire.com)
 * [**L**aravel](https://laravel.com)
 
