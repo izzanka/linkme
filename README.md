@@ -9,7 +9,7 @@ a Linktree (https://linktr.ee) website clone
 
 ## Built With
 
-### BALL STACK
+### Ball Stack
 * [**B**ootstrap](https://getbootstrap.com)
 * [**A**lpinejs](https://alpinejs.dev)
 * [**L**ivewire](https://laravel-livewire.com)
