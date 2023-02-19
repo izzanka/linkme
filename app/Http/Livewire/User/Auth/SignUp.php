@@ -43,7 +43,7 @@ class SignUp extends Component
                 ]);
 
                 if($this->image == null){
-                    $url = 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true';
+                    $url = 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true&size=112';
                     $user->addMediaFromUrl($url)->toMediaCollection('users');
                 }else{
                     $user->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('users');
