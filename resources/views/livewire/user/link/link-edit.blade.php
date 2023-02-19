@@ -23,7 +23,7 @@
                     @enderror
                 </div>
                 <div class="col-2 mt-3 mb-3">
-                    <button class="btn btn-purple rounded-4" type="submit" @click.debounce.500ms="open = false" wire:loading.attr="disabled" wire:target="update">
+                    <button class="btn btn-purple rounded-4" type="submit" wire:loading.attr="disabled" wire:target="update">
                         <div wire:loading wire:target="update">
                             <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                         </div>
