@@ -10,7 +10,7 @@
             <form wire:submit.prevent="updateProfileImage">
                 <div class="row">
                     <div class="col-3 mt-2">
-                        <span class="avatar avatar-xl rounded-circle" style="background-image: url({{ auth()->user()->getFirstMediaUrl('users','thumb') }})"></span>
+                        <img class="avatar avatar-xl rounded-circle" src="{{ auth()->user()->getFirstMediaUrl('users','thumb') }}" alt="profile-img" loading="lazy">
                     </div>
                     <div class="col-9 mt-2">
                         <div wire:loading wire:target="image">

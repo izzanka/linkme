@@ -1,7 +1,6 @@
 <div>
     <div class="row">
         <div class="col-3">
-
         </div>
         <div class="col-6">
             <div class="input-icon">
@@ -12,10 +11,8 @@
             </div>
         </div>
         <div class="col-3">
-
         </div>
     </div>
-
 
     <div class="mt-3">
         <div class="text-center">
@@ -42,10 +39,10 @@
                             <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-2">
-                                        <span class="avatar avatar-lg rounded-circle" style="background-image: url({{ $user->getFirstMediaUrl('users','thumb') }})"></span>
+                                    <div class="col-3">
+                                        <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
                                     </div>
-                                    <div class="col-10">
+                                    <div class="col-9">
                                         <h2>{{ $user->username }}</h2>
                                         <h4>{{ $user->credential }}</h4>
                                     </div>
@@ -56,13 +53,10 @@
                     @endforeach
                 </div>
                 <div class="col-3">
-
                 </div>
-
-
             </div>
-
         @endif
+
     </div>
     <hr>
 </div>

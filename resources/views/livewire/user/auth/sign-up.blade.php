@@ -53,7 +53,7 @@
 
                     @if ($image)
                         <div class="mb-3 text-center">
-                            <span class="avatar avatar-xl rounded-circle border border-dark" style="background-image: url({{ $image->temporaryUrl() }})"></span>
+                            <img class="avatar avatar-xl rounded-circle" src="{{ $image->temporaryUrl() }}" alt="preview" loading="lazy">
                         </div>
                     @endif
 

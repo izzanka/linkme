@@ -1,14 +1,11 @@
 <div class="row">
-    {{-- <div class="col-2">
-
-    </div> --}}
     <div class="col-12">
         <div class="card rounded-4" style="background-color: {{ $appearance->background_color }}">
             <div class="card-body">
                 <div class="text-center">
                     <div class="row mt-3">
                         <div class="col-12">
-                            <span class="avatar avatar-xl rounded-circle " style="background-image: url({{ auth()->user()->getFirstMediaUrl('users','thumb') }})"></span>
+                            <img class="avatar avatar-xl rounded-circle " src="{{ auth()->user()->getFirstMediaUrl('users','thumb') }}" alt="profile-image" loading="lazy">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -39,12 +36,11 @@
                                     </h4>
                                 </a>
                             </div>
-
                         </div>
 
                         <div class="col-2">
-
                         </div>
+
                         @endforeach
                     </div>
                     <div class="row mt-5">
@@ -55,9 +51,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-    {{-- <div class="col-2">
-
-    </div> --}}
 </div>
