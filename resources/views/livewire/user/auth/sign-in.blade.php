@@ -1,9 +1,5 @@
 <div class="page-center">
     <div class="container container-tight py-4">
-      {{-- <div class="text-center mb-4">
-        <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
-      </div> --}}
-
       @if (session()->has('message'))
         <div class="alert alert-important alert-danger alert-dismissible rounded-4" role="alert">
             <div class="d-flex">
@@ -34,9 +30,6 @@
             <div class="mb-2">
               <label class="form-label required">
                 Password
-                <span class="form-label-description">
-                  <a href="">I forgot password</a>
-                </span>
               </label>
 
                 <input type="password" class="form-control rounded-3 @error('password') is-invalid @enderror"  placeholder="Your password"  autocomplete="off" wire:model.lazy="password">
@@ -66,11 +59,9 @@
         <div class="hr-text">or</div>
         <div class="card-body">
           <div class="row">
-            <div class="col"><a href="#" class="btn w-100 rounded-4">
-                Login with Google
-              </a></div>
-            <div class="col"><a href="#" class="btn w-100 rounded-4">
-                Login with Facebook
+            <div class="col">
+                <a href="#" class="btn w-100 rounded-4 btn-danger">
+                 Login with Google
               </a></div>
           </div>
         </div>

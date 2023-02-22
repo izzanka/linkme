@@ -23,11 +23,8 @@
 
         @if (!empty($search))
             <div class="row">
-                <div class="col-3">
-                </div>
-                <div class="col-6">
                     @if($users->isEmpty())
-                        <div class="card rounded-4 bg-light border border-dark mt-3">
+                        <div class="card rounded-4 mt-3">
                             <div class="card-body text-center">
                                 User not found!
                             </div>
@@ -35,25 +32,24 @@
                     @endif
 
                     @foreach($users as $user)
-                        <div class="card rounded-4 bg-light border border-dark mt-3">
-                            <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
-                                    </div>
-                                    <div class="col-9">
-                                        <h2>{{ $user->username }}</h2>
-                                        <h4>{{ $user->credential }}</h4>
+                        <div class="col-6">
+                            <div class="card rounded-4 mt-3">
+                                <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
+                                        </div>
+                                        <div class="col-9">
+                                            <h2>{{ $user->username }}</h2>
+                                            <h4>{{ $user->bio }}</h4>
+                                        </div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
-                            </a>
                         </div>
                     @endforeach
-                </div>
-                <div class="col-3">
-                </div>
             </div>
         @endif
 
