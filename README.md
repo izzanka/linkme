@@ -10,12 +10,13 @@ a Linktree (https://linktr.ee) website clone
 ## Built With
 
 ### Ball Stack
-* [**B**ootstrap](https://getbootstrap.com)
-* [**A**lpinejs](https://alpinejs.dev)
-* [**L**ivewire](https://laravel-livewire.com)
-* [**L**aravel](https://laravel.com)
+* [**(B)** Bootstrap](https://getbootstrap.com)
+* [**(A)** Alpinejs](https://alpinejs.dev)
+* [**(L)** Livewire](https://laravel-livewire.com)
+* [**(L)** Laravel](https://laravel.com)
 
 ### Package
+
 * [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
 
 ### UI Kit
