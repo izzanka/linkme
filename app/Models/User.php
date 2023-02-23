@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -20,6 +21,11 @@ class User extends Authenticatable implements HasMedia
         'password',
         'remember_token',
     ];
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')->width(112)->height(112);
+    }
 
     public function links()
     {
@@ -40,6 +46,4 @@ class User extends Authenticatable implements HasMedia
     {
         return 'username_slug';
     }
-
-
 }
