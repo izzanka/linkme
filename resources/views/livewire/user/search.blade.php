@@ -24,10 +24,8 @@
         @if (!empty($search))
             <div class="row">
                     @if($users->isEmpty())
-                        <div class="card rounded-4 mt-3">
-                            <div class="card-body text-center">
-                                User not found!
-                            </div>
+                        <div class="text-white text-center">
+                            User not found!
                         </div>
                     @endif
 

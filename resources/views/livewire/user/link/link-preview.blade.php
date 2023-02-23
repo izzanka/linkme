@@ -5,7 +5,7 @@
                 <div class="text-center">
                     <div class="row mt-3">
                         <div class="col-12">
-                            <img class="avatar avatar-xl rounded-circle " src="{{ auth()->user()->getFirstMediaUrl('users','thumb') }}" alt="profile-image" loading="lazy">
+                            <img class="avatar avatar-xl rounded-circle" src="{{ auth()->user()->getFirstMediaUrl('users','thumb') }}" alt="profile-image" loading="lazy">
                         </div>
                     </div>
                     <div class="row mt-3">
