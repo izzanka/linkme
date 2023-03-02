@@ -4,7 +4,6 @@
             <span class="spinner-border spinner-border-sm ml-2" role="status"></span>
         </div>
     </h2>
-
     <div class="card rounded-4 mt-2">
         <div class="card-body">
             <form wire:submit.prevent="updateProfileImage">
@@ -38,22 +37,22 @@
             </form>
 
             <div class="row mt-4 mb-3">
-                    <div class="row">
-                        <input type="text" class="form-control rounded-3 @error('username') is-invalid @enderror" placeholder="Username"  wire:model.lazy="username">
-                        @error('username')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="row mt-2">
-                        <textarea class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Bio" wire:model.lazy="bio"></textarea>
-                        @error('bio')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                <div class="row">
+                    <input type="text" class="form-control rounded-3 @error('username') is-invalid @enderror" placeholder="Username"  wire:model.lazy="username">
+                    @error('username')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="row mt-2">
+                    <textarea class="form-control rounded-3 @error('bio') is-invalid @enderror" placeholder="Bio" wire:model.lazy="bio"></textarea>
+                    @error('bio')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
             </div>
         </div>
     </div>

@@ -27,8 +27,6 @@ class AppearanceRequest extends FormRequest
             'background_color' => ['required','size:7','starts_with:#'],
             'button_color' => ['required','size:7','starts_with:#'],
             'button_font_color' => ['required','size:7','starts_with:#'],
-            'button_fill' => ['required','size:7','starts_with:#'],
-            'button_outline' => ['required','size:7','starts_with:#'],
             'font_color' => ['required','size:7','starts_with:#'],
         ];
     }

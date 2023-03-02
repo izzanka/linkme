@@ -31,6 +31,7 @@ class LinkCreate extends Component
             session()->flash('message', 'Can only have 5 links');
 
         }else{
+
             $this->validate();
 
             try{

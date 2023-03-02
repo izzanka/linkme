@@ -3,21 +3,18 @@
 namespace App\Http\Livewire\User\Appearance;
 
 use App\Http\Requests\User\AppearanceRequest;
-use App\Models\Appearance;
 use Livewire\Component;
 
 class AppearanceIndex extends Component
 {
-    public $background_color, $button_color, $button_font_color, $button_fill, $button_outline, $font_color;
+    public $background_color, $button_color, $button_font_color, $font_color;
 
-    public function mount(Appearance $appearance)
+    public function mount()
     {
-        $this->background_color = $appearance->background_color;
-        $this->button_color = $appearance->button_color;
-        $this->button_font_color = $appearance->button_font_color;
-        $this->button_fill = $appearance->button_fill;
-        $this->button_outline = $appearance->button_outline;
-        $this->font_color = $appearance->font_color;
+        $this->background_color = auth()->user()->appearance->background_color;
+        $this->button_color = auth()->user()->appearance->button_color;
+        $this->button_font_color = auth()->user()->appearance->button_font_color;
+        $this->font_color = auth()->user()->appearance->font_color;
     }
 
     protected function rules()

@@ -23,34 +23,33 @@
 
         @if (!empty($search))
             <div class="row">
-                    @if($users->isEmpty())
-                        <div class="text-white text-center">
-                            User not found!
-                        </div>
-                    @endif
+                @if($users->isEmpty())
+                    <div class="text-white text-center">
+                        User not found!
+                    </div>
+                @endif
 
-                    @foreach($users as $user)
-                        <div class="col-6">
-                            <div class="card rounded-4 mt-3">
-                                <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
-                                        </div>
-                                        <div class="col-9">
-                                            <h2>{{ $user->username }}</h2>
-                                            <h4>{{ $user->bio }}</h4>
-                                        </div>
+                @foreach($users as $user)
+                    <div class="col-6">
+                        <div class="card rounded-4 mt-3">
+                            <a href="{{ route('users.show', $user->username_slug) }}" class="text-dark" style="text-decoration: none" target="_blank">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
+                                    </div>
+                                    <div class="col-9">
+                                        <h2>{{ $user->username }}</h2>
+                                        <h4>{{ $user->bio }}</h4>
                                     </div>
                                 </div>
-                                </a>
                             </div>
+                            </a>
                         </div>
-                    @endforeach
+                    </div>
+                @endforeach
             </div>
         @endif
-
     </div>
     <hr>
 </div>

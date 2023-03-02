@@ -28,7 +28,7 @@ class LinkIndex extends Component
     {
         try {
 
-            $link = Link::find($linkId);
+            $link = Link::findOrFail($linkId);
             $this->linkId = $link->id;
             $this->title = $link->title;
             $this->url = $link->url;
@@ -42,7 +42,7 @@ class LinkIndex extends Component
     public function delete($linkId)
     {
         try {
-            $link = Link::find($linkId);
+            $link = Link::findOrFail($linkId);
             $link->delete();
 
             $this->emit('link-preview-refresh');
@@ -59,7 +59,7 @@ class LinkIndex extends Component
 
         try {
 
-            $link = Link::find($linkId);
+            $link = Link::findOrFail($linkId);
 
             $link->update([
                 'active' => $this->status,
@@ -77,7 +77,7 @@ class LinkIndex extends Component
         try {
             $this->validate();
 
-            $link = Link::find($this->linkId);
+            $link = Link::findOrFail($this->linkId);
 
             $link->update([
                 'title' => $this->title,

@@ -1,5 +1,8 @@
 <div class="page-center">
     <div class="container container-tight py-4">
+        @if (session()->has('message'))
+            @include('layouts.message')
+        @endif
       <div class="card card-md rounded-4">
             <div class="card-body">
                 <h2 class="text-center mb-4">Create new account</h2>

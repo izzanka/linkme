@@ -2,13 +2,10 @@
 
 namespace App\Http\Livewire\User\Link;
 
-use App\Models\Appearance;
 use Livewire\Component;
 
 class LinkPreview extends Component
 {
-    public $appearance;
-
     protected $listeners = [
         'link-preview-refresh' => '$refresh'
     ];

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User\Profile;
 
 use App\Http\Requests\User\ProfileRequest;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,6 +12,12 @@ class ProfileIndex extends Component
     use WithFileUploads;
 
     public $username, $bio, $image, $iteration;
+
+    public function mount()
+    {
+        $this->username = auth()->user()->username;
+        $this->bio = auth()->user()->bio;
+    }
 
     public function rules()
     {
@@ -23,10 +30,12 @@ class ProfileIndex extends Component
 
         auth()->user()->update([
             'username' => $this->username,
+            'username_slug' => Str::slug($this->username),
             'bio' => $this->bio,
         ]);
 
         $this->emit('link-preview-refresh');
+        $this->emit('link-navbar-refresh');
         $this->emit('profile-navbar-refresh');
     }
 

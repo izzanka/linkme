@@ -6,9 +6,8 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show($username_slug)
     {
-        $user->load(['links' => fn($query) => $query->where('active', true),'appearance']);
-        return view('show', compact('user'));
+        return view('show', compact('username_slug'));
     }
 }

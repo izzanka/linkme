@@ -29,7 +29,7 @@ class LinkEdit extends Component
         try {
             $this->validate();
 
-            $link = Link::find($this->linkId);
+            $link = Link::findOrFail($this->linkId);
 
             $link->update([
                 'title' => $this->title,

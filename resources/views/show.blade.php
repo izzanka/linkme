@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $user->username }} | LinkMe</title>
+    <title>{{ $username_slug }} | LinkMe</title>
 
     <!-- Tabler Style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
@@ -20,20 +20,11 @@
             overflow-x: hidden; /* Hide vertical scrollbar */
         }
     </style>
-
     @livewireStyles
+
 </head>
 
-<body style="background-color: {{ $user->appearance->background_color }}" >
-    <main>
-        <livewire:user.show :user="$user"/>
-    </main>
-    <div class="fixed-bottom">
-        <div class="mb-4 text-center">
-            <a href="{{ route('home') }}" style="color: {{ $user->appearance->font_color }}"><h4>LinkMe</h4></a>
-        </div>
-    </div>
+    <livewire:user.show :user="$username_slug"/>
     @livewireScripts
-</body>
 
 </html>
