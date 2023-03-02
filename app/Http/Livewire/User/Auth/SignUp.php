@@ -14,7 +14,7 @@ class SignUp extends Component
 {
     use WithFileUploads;
 
-    public $username, $email, $password, $image, $bio;
+    public string $username = '', $email = '', $password = '', $image = '', $bio = '';
 
     protected function rules()
     {

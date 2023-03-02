@@ -8,7 +8,8 @@ use Livewire\Component;
 
 class SignIn extends Component
 {
-    public $email, $password, $remember_me = false;
+    public string $email = '', $password = '';
+    public bool $remember_me = false;
 
     protected function rules()
     {

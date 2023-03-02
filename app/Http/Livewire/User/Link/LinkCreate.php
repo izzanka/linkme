@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class LinkCreate extends Component
 {
-    public $url, $title;
+    public string $url = '', $title = '';
 
     protected $listeners = [
         'link-create-refresh' => '$refresh',

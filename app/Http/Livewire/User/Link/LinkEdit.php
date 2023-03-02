@@ -8,7 +8,8 @@ use Livewire\Component;
 
 class LinkEdit extends Component
 {
-    public $linkId, $title, $url;
+    public int $linkId = 0;
+    public string $title = '', $url = '';
 
     protected $listeners = [
         'link-edit-refresh' => '$refresh',
@@ -26,8 +27,9 @@ class LinkEdit extends Component
 
     public function update()
     {
+        $this->validate();
+
         try {
-            $this->validate();
 
             $link = Link::findOrFail($this->linkId);
 

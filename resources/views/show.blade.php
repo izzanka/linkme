@@ -24,7 +24,7 @@
 
 </head>
 
-    <livewire:user.show :user="$username_slug"/>
+    <livewire:user.show :username_slug="$username_slug"/>
     @livewireScripts
 
 </html>

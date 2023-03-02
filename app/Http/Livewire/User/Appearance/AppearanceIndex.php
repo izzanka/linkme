@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AppearanceIndex extends Component
 {
-    public $background_color, $button_color, $button_font_color, $font_color;
+    public string $background_color = '', $button_color = '', $button_font_color = '', $font_color = '';
 
     public function mount()
     {

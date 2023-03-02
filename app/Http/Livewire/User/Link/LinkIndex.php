@@ -8,7 +8,9 @@ use Livewire\Component;
 
 class LinkIndex extends Component
 {
-    public $linkId, $status, $title, $url, $editLink = false;
+    public int $linkId = 0;
+    public string $title = '', $url = '';
+    public bool $status = false, $editLink = false;
 
     protected $listeners = [
         'link-index-refresh' => '$refresh'
@@ -42,6 +44,7 @@ class LinkIndex extends Component
     public function delete($linkId)
     {
         try {
+
             $link = Link::findOrFail($linkId);
             $link->delete();
 
@@ -74,8 +77,9 @@ class LinkIndex extends Component
 
     public function update()
     {
+        $this->validate();
+
         try {
-            $this->validate();
 
             $link = Link::findOrFail($this->linkId);
 

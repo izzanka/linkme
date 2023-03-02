@@ -11,7 +11,8 @@ class ProfileIndex extends Component
 {
     use WithFileUploads;
 
-    public $username, $bio, $image, $iteration;
+    public string $username = '', $bio = '', $image = '';
+    public int $iteration = 0;
 
     public function mount()
     {
@@ -28,15 +29,21 @@ class ProfileIndex extends Component
     {
         $this->validateOnly($propertyName);
 
-        auth()->user()->update([
-            'username' => $this->username,
-            'username_slug' => Str::slug($this->username),
-            'bio' => $this->bio,
-        ]);
+        try {
 
-        $this->emit('link-preview-refresh');
-        $this->emit('link-navbar-refresh');
-        $this->emit('profile-navbar-refresh');
+            auth()->user()->update([
+                'username' => $this->username,
+                'username_slug' => Str::slug($this->username),
+                'bio' => $this->bio,
+            ]);
+
+            $this->emit('link-preview-refresh');
+            $this->emit('link-navbar-refresh');
+            $this->emit('profile-navbar-refresh');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
     }
 
     public function updateProfileImage()
@@ -45,15 +52,21 @@ class ProfileIndex extends Component
             'image' => 'required|max:2048|image',
         ]);
 
-        auth()->user()->clearMediaCollection('users');
+        try {
 
-        auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('users');
+            auth()->user()->clearMediaCollection('users');
 
-        $this->reset(['image']);
-        $this->iteration++;
+            auth()->user()->addMediaFromDisk('livewire-tmp/' . $this->image->getFileName())->toMediaCollection('users');
 
-        $this->emit('link-preview-refresh');
-        $this->emit('profile-navbar-refresh');
+            $this->reset(['image']);
+            $this->iteration++;
+
+            $this->emit('link-preview-refresh');
+            $this->emit('profile-navbar-refresh');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Something wrong! please try again later.');
+        }
     }
 
     public function render()

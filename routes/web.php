@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Livewire\User\Auth\SignIn;
 use App\Http\Livewire\User\Auth\SignUp;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/sign-out', [AuthController::class, 'signout'])->name('sign-out');
 });
 
-Route::get('/{user:username_slug}', function($username_slug){
-    return view('show', compact('username_slug'));
-});
+Route::get('/{user:username_slug}', [UserController::class, 'show'])->name('users.show');
 

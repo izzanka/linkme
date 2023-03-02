@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search = '';
+    public string $search = '';
 
     protected $queryString = [
         'search' => ['except' => ''],
