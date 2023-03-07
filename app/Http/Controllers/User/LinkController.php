@@ -7,10 +7,15 @@ class LinkController extends Controller
 {
     public function index()
     {
-        $views = auth()->user()->views;
-        $clicks = auth()->user()->links()->sum('clicks');
-        $rates = $clicks / $views;
-        $ctr = $rates * 100;
+        $ctr = 0;
+        $views = auth()->user()->views ?? 0;
+        $clicks = auth()->user()->links()->sum('clicks') ?? 0;
+
+        if($views != 0 && $clicks != 0)
+        {
+            $rates = $clicks / $views;
+            $ctr = $rates * 100;
+        }
 
         return view('user.link.index', compact('views','clicks','ctr'));
     }
