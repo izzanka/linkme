@@ -11,7 +11,7 @@ class LinkController extends Controller
         $views = auth()->user()->views ?? 0;
         $clicks = auth()->user()->links()->sum('clicks') ?? 0;
 
-        if($views != 0 && $clicks != 0)
+        if($clicks != 0)
         {
             $rates = $clicks / $views;
             $ctr = $rates * 100;
