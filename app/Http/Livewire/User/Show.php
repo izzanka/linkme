@@ -9,12 +9,12 @@ use Livewire\Component;
 class Show extends Component
 {
     public array $links = [];
-    public string $font_color = '', $background_color = '', $button_rounded = '', $button_outline = '', $button_color = '', $button_font_color = '',
-                  $username = '', $bio = '', $image = '';
+    public string $font_color = '', $background_color = '', $button_rounded = '', $button_outline = '', $button_color = '', $button_font_color = '', $username = '', $bio = '';
+    public $image = null;
 
     public function mount($username_slug)
     {
-        $user = User::with(['links' => fn($query) => $query->where('active', true),'appearance'])->where('username_slug', $username_slug)->first();
+        $user = User::with(['links' => fn($query) => $query->where('isActive', true),'appearance'])->where('username_slug', $username_slug)->first();
 
         if(!$user){
             abort(404);

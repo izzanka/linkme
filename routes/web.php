@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\LinkController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\User\Auth\SignIn;
 use App\Http\Livewire\User\Auth\SignUp;
@@ -23,8 +24,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/sign-in', SignIn::class)->name('login');
 
-Route::middleware(['auth'])->group(function () {
-    Route::view('/links', 'user.link.index')->name('links.index');
+Route::middleware(['auth'])->group(function ()
+{
+    Route::get('/links', [LinkController::class, 'index'])->name('links.index');
+
     Route::view('/appearances', 'user.appearance.index')->name('appearances.index');
 
     Route::post('/sign-out', [AuthController::class, 'signout'])->name('sign-out');

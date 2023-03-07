@@ -39,8 +39,8 @@
                                         <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="image-profile">
                                     </div>
                                     <div class="col-9">
-                                        <h2>{{ $user->username }}</h2>
-                                        <h4>{{ $user->bio }}</h4>
+                                        <h2 class="mt-2">{{ $user->username }}</h2>
+                                        <h4 class="mb-2">{{ $user->bio }}</h4>
                                     </div>
                                 </div>
                             </div>

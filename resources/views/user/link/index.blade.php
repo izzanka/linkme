@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container mt-4">
+
         @if (session()->has('message'))
             @include('layouts.message')
         @endif
+
         <div class="row">
             <div class="col-6" x-data="{open: false}">
                 <div class="card rounded-4" @click.outside="open = false">
@@ -31,11 +34,14 @@
                                 </div>
                             </div>
                             <div class="row text-center mt-2">
-                                <div class="col-6">
-                                    Views: {{ auth()->user()->views }}
+                                <div class="col-4">
+                                    Views: {{ $views }}
                                 </div>
-                                <div class="col-6">
-                                    Clicks: {{ auth()->user()->links()->sum('clicks') }}
+                                <div class="col-4">
+                                    Clicks: {{ $clicks }}
+                                </div>
+                                <div class="col-4">
+                                    CTR: {{ number_format($ctr) }}%
                                 </div>
                             </div>
                         </div>
@@ -50,4 +56,5 @@
             </div>
         </div>
     </div>
+
 @endsection

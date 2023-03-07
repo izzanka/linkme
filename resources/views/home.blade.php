@@ -31,7 +31,7 @@
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($users as $user)
                             <a target="_blank" href="{{ route('users.show', $user->username_slug) }}" alt="preview-image">
-                                <img loading="lazy" class="avatar avatar-xl rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="profile-image">
+                                <img loading="lazy" class="avatar avatar-xl rounded-circle" src="{{ $user->getFirstMediaUrl('users','thumb') }}" alt="profile-image" width="112" height="112">
                             </a>
                         @endforeach
                     </marquee>

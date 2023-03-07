@@ -13,7 +13,7 @@ class LinkPreview extends Component
     public function render()
     {
         return view('livewire.user.link.link-preview',[
-            'links' => auth()->user()->links()->select('id','title','url')->where('active', true)->orderBy('created_at')->get(),
+            'links' => auth()->user()->links()->select('id','title','url')->where('isActive', true)->orderBy('created_at')->get(),
         ]);
     }
 }

@@ -8,15 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
     <title>{{ config('app.name', 'LinkMe') }}</title>
 
     <!-- Tabler Style -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-    <!-- Livewire Style -->
-    @livewireStyles
 
     <style>
         @import url('https://rsms.me/inter/inter.css');
@@ -27,6 +23,9 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+
+    <!-- Livewire Style -->
+    @livewireStyles
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js"></script>
 </head>

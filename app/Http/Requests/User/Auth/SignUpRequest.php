@@ -23,7 +23,7 @@ class SignUpRequest extends FormRequest
             'username' => ['required','max:19', 'string', 'unique:users,username'],
             'email' => ['required', 'email', 'unique:users,email'],
             'image' => ['nullable','image','max:2048'],
-            'bio' => ['nullable','string','max:40'],
+            'bio' => ['required','string','max:40'],
             'password' => ['required', 'string', Password::defaults()]
         ];
     }

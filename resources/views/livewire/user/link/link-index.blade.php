@@ -1,82 +1,40 @@
 <div class="mt-4" x-data="{open: false}">
         <div class="text-center">
-            <div wire:loading.delay.longer wire:target="updateStatus, delete, update">
+            <div wire:loading.delay.longer wire:target="updateStatus, delete, links">
                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
             </div>
         </div>
 
-        @if ($editLink)
-        <div x-show="open" x-transition>
-            {{-- <livewire:user.link.link-edit /> --}}
-            <div class="card rounded-4">
-                <div class="card-body" @click.outside="open = false">
-                    <a class="btn-close float-end" @click="open = false" wire:click="resetEdit"></a>
-                    <label class="form-label"><b>Edit Link</b></label>
-                    <form wire:submit.prevent="update">
-                        <div class="row">
-                            <div class="col-10">
-                                <input type="text" class="form-control rounded-3 mt-3 @error('title') is-invalid @enderror" placeholder="Title*" wire:model="title">
-                                @error('title')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10">
-                                <input type="text" class="form-control rounded-3 mt-3 @error('url') is-invalid @enderror" placeholder="URL*" wire:model="url">
-                                @error('url')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="col-2 mt-3 mb-3">
-                                <button class="btn btn-purple rounded-4" type="submit" @click.debounce.500ms="open = false">
-                                    <div wire:loading wire:target="update">
-                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-                                    </div>
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @foreach($links as $link)
+        @foreach($links as $index => $link)
             <div class="card mt-3 rounded-4">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-11">
-                            <input type="text" class="form-control form-control-flush" placeholder="Title" value="{{ $link->title }}">
-                            <br>
-                            <input type="text" class="form-control form-control-flush" placeholder="URL" value="{{ $link->url }}">
+                            <input type="text" class="@error('links.' . $index . '.title') is-invalid @enderror form-control form-control-flush" placeholder="Title" wire:model.lazy="links.{{ $index }}.title">
+                            @error('links.' . $index . '.title')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="col-1">
-                            <label class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" @if($link->active) checked @endif wire:click="updateStatus({{ $link->active }}, {{ $link->id }})">
-                            </label>
+                            @livewire('user.link.link-status', ['link' => $link->id], key($link->id))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            <input type="text" class="@error('links.' . $index . '.url') is-invalid @enderror mt-3 form-control form-control-flush" placeholder="URL" wire:model.lazy="links.{{ $index }}.url">
+                            @error('links.' . $index . '.url')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-10">
                             <div class="row">
-                                <div class="col-1">
-                                    <a href="#" class="text-dark">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M15 8l.01 0"></path>
-                                            <path d="M4 4m0 3a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3z"></path>
-                                            <path d="M4 15l4 -4a3 5 0 0 1 3 0l5 5"></path>
-                                            <path d="M14 14l1 -1a3 5 0 0 1 3 0l2 2"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="col-11">
+                                <div class="col-12 @if($link->clicks == 0) text-secondary @endif">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hand-click" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
@@ -88,21 +46,12 @@
                                         <path d="M14 3l1 -1"></path>
                                         <path d="M15 6h1"></path>
                                     </svg>
-                                    {{ $link->clicks }}
+                                    {{ $link->clicks }} clicks
                                 </div>
+
                             </div>
                         </div>
-                        <div class="col-1">
-                            <a href="#" class="text-dark" @click="open = true" wire:click.prevent="edit({{ $link->id }})">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
-                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
-                                    <path d="M16 5l3 3"></path>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="col-1">
+                        <div class="col-2">
                             <a href="#" wire:click.prevent="delete({{ $link->id }})" class="text-dark float-end">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -111,8 +60,8 @@
                                     <path d="M14 11l0 6"></path>
                                     <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                     <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                    </svg>
-                                </a>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>

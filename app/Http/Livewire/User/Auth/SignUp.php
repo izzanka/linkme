@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\DB;
 use illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Image\Image;
 
 class SignUp extends Component
 {
     use WithFileUploads;
 
-    public string $username = '', $email = '', $password = '', $image = '', $bio = '';
+    public string $username = '', $email = '', $password = '', $bio = '';
+    public $image = null;
 
     protected function rules()
     {

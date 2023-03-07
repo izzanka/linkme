@@ -26,7 +26,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'username' => ['required', 'max:19', 'string', Rule::unique('users')->ignore(auth()->id())],
-            'bio' => ['nullable','string','max:40'],
+            'bio' => ['required','string','max:40'],
         ];
     }
 }

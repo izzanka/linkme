@@ -6,12 +6,14 @@ use App\Http\Requests\User\ProfileRequest;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Image\Image;
 
 class ProfileIndex extends Component
 {
     use WithFileUploads;
 
-    public string $username = '', $bio = '', $image = '';
+    public string $username = '', $bio = '';
+    public $image = null;
     public int $iteration = 0;
 
     public function mount()
