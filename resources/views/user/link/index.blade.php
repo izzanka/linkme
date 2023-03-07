@@ -33,7 +33,7 @@
                                     Lifetime
                                 </div>
                             </div>
-                            <div class="row text-center mt-2">
+                            <div class="row text-center mt-3">
                                 <div class="col-4">
                                     Views: {{ $views }}
                                 </div>
