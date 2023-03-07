@@ -12,13 +12,9 @@ class Show extends Component
     public string $font_color = '', $background_color = '', $button_rounded = '', $button_outline = '', $button_color = '', $button_font_color = '', $username = '', $bio = '';
     public $image = null;
 
-    public function mount($username_slug)
+    public function mount(User $user)
     {
-        $user = User::with(['links' => fn($query) => $query->where('isActive', true),'appearance'])->where('username_slug', $username_slug)->first();
-
-        if(!$user){
-            abort(404);
-        }
+        $user->load(['links' => fn($query) => $query->where('isActive', true),'appearance']);
 
         $this->font_color = $user->appearance->font_color;
         $this->background_color = $user->appearance->background_color;

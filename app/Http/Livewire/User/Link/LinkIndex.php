@@ -55,11 +55,10 @@ class LinkIndex extends Component
         }
     }
 
-    public function delete($linkId)
+    public function delete(Link $link)
     {
         try {
 
-            $link = Link::findOrFail($linkId);
             $link->delete();
 
             $this->emit('link-index-refresh');

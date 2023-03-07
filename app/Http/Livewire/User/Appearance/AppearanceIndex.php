@@ -42,7 +42,7 @@ class AppearanceIndex extends Component
         }
     }
 
-    public function updateButton($button_type, $button_rounded_size)
+    public function updateButton(string $button_type, string $button_rounded_size)
     {
         $button_types = ['fill','outline'];
         $button_rounded_sizes = ['0','4','pill'];

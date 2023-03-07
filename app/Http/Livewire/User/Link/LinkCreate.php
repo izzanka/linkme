@@ -27,7 +27,7 @@ class LinkCreate extends Component
     {
         if(auth()->user()->links()->count() >= 5){
 
-            $this->reset(['url','title']);
+            $this->reset();
             session()->flash('message', 'Can only have 5 links');
 
         }else{
@@ -40,7 +40,7 @@ class LinkCreate extends Component
                     'url' => $this->url
                 ]);
 
-                $this->reset(['url','title']);
+                $this->reset();
                 $this->emit('link-index-mount');
 
             }catch(\Throwable $th){

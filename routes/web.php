@@ -33,5 +33,5 @@ Route::middleware(['auth'])->group(function ()
     Route::post('/sign-out', [AuthController::class, 'signout'])->name('sign-out');
 });
 
-Route::get('/{user:username_slug}', [UserController::class, 'show'])->name('users.show');
+Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
 

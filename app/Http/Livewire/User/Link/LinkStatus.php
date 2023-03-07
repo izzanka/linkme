@@ -16,7 +16,7 @@ class LinkStatus extends Component
         $this->link = $link;
     }
 
-    public function updating($field, $value)
+    public function updating(string $field, bool $value)
     {
         $this->link->update([
             'isActive' => $value
