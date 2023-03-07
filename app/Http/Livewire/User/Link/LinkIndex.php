@@ -20,8 +20,8 @@ class LinkIndex extends Component
     }
 
     protected $rules = [
-        'links.*.title' => 'required|string|max:15',
-        'links.*.url' => 'required|url|active_url|max:225',
+        'links.*.title' => ['required','string','max:15'],
+        'links.*.url' => ['required','url','active_url','max:225'],
     ];
 
     protected $messages = [
