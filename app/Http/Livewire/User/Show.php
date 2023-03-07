@@ -4,6 +4,7 @@ namespace App\Http\Livewire\User;
 
 use App\Models\Link;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Show extends Component
@@ -29,12 +30,24 @@ class Show extends Component
         $this->image = $user->getFirstMediaUrl('users','thumb');
         $this->links = $user->links->toArray();
 
-        $user->incrementViewsCount();
+        if(Auth::check()){
+            if(auth()->id() != $user->id){
+                $user->incrementViewsCount();
+            }
+        }else{
+            $user->incrementViewsCount();
+        }
     }
 
     public function clicked(Link $link)
     {
-        $link->incrementClicksCount();
+        if(Auth::check()){
+            if(auth()->id() != $link->user_id){
+                $link->incrementClicksCount();
+            }
+        }else{
+            $link->incrementClicksCount();
+        }
     }
 
     public function render()
