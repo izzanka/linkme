@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title', 15);
             $table->string('url', 225);
             $table->boolean('isActive')->default(false);
-            $table->bigInteger('clicks')->unsigned()->default(0)->index();
+            $table->bigInteger('clicks')->unsigned()->default(0);
             $table->timestamps();
         });
     }

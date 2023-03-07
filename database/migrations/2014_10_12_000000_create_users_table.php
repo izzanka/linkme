@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('bio', 40)->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->bigInteger('views')->unsigned()->default(0)->index();
+            $table->bigInteger('views')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
