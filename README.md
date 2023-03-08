@@ -20,6 +20,9 @@ a Linktree (https://linktr.ee) website clone
 * [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
 * [LasseRafn/ui-avatars](https://github.com/LasseRafn/ui-avatars)
 
+### Api
+* [UIAvatars](https://ui-avatars.com/)
+
 ### UI Kit
 * [tabler/tabler](https://github.com/tabler/tabler)
 * [tabler/tabler-icons](https://github.com/tabler/tabler-icons)
