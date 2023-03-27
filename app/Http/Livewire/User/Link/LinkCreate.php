@@ -40,8 +40,9 @@ class LinkCreate extends Component
                     'url' => $this->url
                 ]);
 
-                $this->reset();
                 $this->emit('link-index-mount');
+                $this->emit('link-create-refresh');
+                $this->reset();
 
             }catch(\Throwable $th){
                 session()->flash('message', 'Something wrong! please try again later.');

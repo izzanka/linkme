@@ -23,9 +23,8 @@
     @livewireStyles
 
 </head>
-
-    <livewire:user.show :user="$username_slug"/>
-
+<body style="background-color: {{ $background_color }}" >
+        <livewire:user.show :user="$username_slug"/>
+</body>
     @livewireScripts
-
 </html>

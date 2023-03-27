@@ -42,6 +42,11 @@ class LinkIndex extends Component
         try {
 
             foreach($this->links as $link){
+
+                if($link->user_id != auth()->id()){
+                    return back();
+                }
+
                 $link->update([
                     'title' => $link->title,
                     'url' => $link->url
@@ -57,10 +62,15 @@ class LinkIndex extends Component
 
     public function delete(Link $link)
     {
+        if($link->user_id != auth()->id()){
+            return back();
+        }
+
         try {
 
             $link->delete();
 
+            $this->emit('link-create-refresh');
             $this->emit('link-index-refresh');
             $this->emit('link-preview-refresh');
 

@@ -1,4 +1,5 @@
-<div class="mt-4" x-data="{open: false}">
+<div>
+    <div class="mt-4" x-data="{open: false}">
         <div class="text-center">
             <div wire:loading.delay.longer wire:target="updateStatus, delete, links">
                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
@@ -77,4 +78,6 @@
                 </div>
             </div>
         @endforeach
+    </div>
 </div>
+
