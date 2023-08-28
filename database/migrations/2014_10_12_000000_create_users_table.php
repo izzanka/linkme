@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('username', 19)->unique();
             $table->string('username_slug', 255);
-            $table->string('bio', 40);
+            $table->string('bio', 40)->nullable();
             $table->string('email')->unique();
+            $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger('total_views')->unsigned()->default(0);
