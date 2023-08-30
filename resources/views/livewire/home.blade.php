@@ -2,13 +2,14 @@
     <div style="background-color: #254F1A">
         <div class="container">
             <div class="row">
-                <div class="col-6 mt-4 mb-5">
+                <div class="col-6 mt-4">
                     <div class="fw-bolder lh-1" style="font-size:90px; color:#D2E823">Everything you are. In one, simple link in bio.</div>
                     <div class="fw-bold mt-4 text-start" style="font-size:20px; color:#D2E823">
-                        Join {{ $totalRegisteredUsers ?? 0 }}+ people, using LinkMe for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.
+                        Join {{ $totalRegisteredUser }}+ people, using LinkMe for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.
                     </div>
                 </div>
-                <div class="col-6 text-center mt-4 mb-5">
+                <div class="col-6 mt-4 text-center mb-4">
+                    <img loading="lazy" src="" class="rounded-4 bg-light border border-dark" alt="preview" style="height: 600px">
                 </div>
             </div>
         </div>
@@ -17,19 +18,17 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12 text-center fw-bolder" style="font-size:50px">
-                    The only link in bio trusted by {{ $totalRegisteredUsers ?? 0 }}+ people.
+                    The only link in bio trusted by {{ $totalRegisteredUser }}+ people.
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-12">
                     <marquee behavior="scroll" direction="left" scrollamount="5">
-                        @if($registeredUsers)
-                            @foreach($registeredUsers as $registeredUser)
-                                <a href="/" class="text-decoration-none">
-                                    <img loading="lazy" src="{{ $registeredUser->image }}" width="112" height="112" class="me-3" alt="image">
-                                </a>
-                            @endforeach
-                        @endif
+                        @foreach ($registeredUsers as $user)
+                            <a target="_blank" href="" alt="preview-image">
+                                <img loading="lazy" class="avatar avatar-xl rounded-circle" src="{{ $user->image }}" alt="profile-image" width="112" height="112">
+                            </a>
+                        @endforeach
                     </marquee>
                 </div>
             </div>
@@ -47,24 +46,26 @@
                     <div class="col-3">
                     </div>
                     <div class="col-6 mt-4">
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Search by username" aria-label="Recipient's username" aria-describedby="button-addon2" wire:model.live="search">
+                        <div class="input-icon">
+                            <input type="text" value="" class="form-control form-control-rounded" placeholder="Search…" wire:model.live="search"/>
+                            <span class="input-icon-addon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                                    <path d="M21 21l-6 -6"></path>
+                                 </svg>
+                            </span>
                         </div>
                     </div>
                     <div class="col-3">
                     </div>
                 </div>
-
                 <div class="mt-2 mb-4">
-                    <div class="text-center mt-3">
+                    <div class="text-center mt-3 mb-2">
                         <div wire:loading wire:target="search">
-                            <div class="spinner-border text-light" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
+                            <div class="spinner-border text-white"></div>
                         </div>
                     </div>
-
                     @if (!empty($search))
                         <div class="row">
                             @if($users->isEmpty())
@@ -75,23 +76,21 @@
                             @foreach($users as $user)
                                 <div class="col-6">
                                     <div class="card rounded-4 mt-3">
-                                        <a href="" class="text-decoration-none">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-3">
-                                                        <img src="{{ $user->image }}" alt="">
-                                                    </div>
-                                                    <div class="col-9 mt-3">
-                                                        <h3 class="text-dark">
-                                                            <b>{{ $user->username }}</b><br>
-                                                        </h3>
-                                                        <small class="text-secondary">
-                                                            " {{ $user->bio }} "
-                                                        </small>
-                                                    </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img loading="lazy" class="avatar avatar-lg rounded-circle" src="{{ $user->image }}" alt="user-image">
+                                                </div>
+                                                <div class="col-9 mt-3">
+                                                    <h2 class="text-dark">
+                                                        <b>{{ $user->username }}</b><br>
+                                                    </h2>
+                                                    <h4 class="text-secondary">
+                                                        "{{ $user->bio }}"
+                                                    </h4>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

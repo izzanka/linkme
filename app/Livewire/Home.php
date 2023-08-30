@@ -10,7 +10,7 @@ use Livewire\Component;
 class Home extends Component
 {
     public $registeredUsers = 0;
-    public $totalRegisteredUsers = 0;
+    public $totalRegisteredUser = 0;
     #[Url]
     public $search = '';
     protected $queryString = [
@@ -20,7 +20,7 @@ class Home extends Component
     public function mount()
     {
         $this->registeredUsers = User::select('id','username','username_slug','bio','image')->latest()->take(10)->get();
-        $this->totalRegisteredUsers = User::count();
+        $this->totalRegisteredUser = User::count();
     }
 
     #[Title('Home | LinkMe')]
