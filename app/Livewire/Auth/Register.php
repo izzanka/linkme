@@ -27,6 +27,7 @@ class Register extends Component
                     'username_slug' => Str::slug($this->registerForm->username),
                     'email' => $this->registerForm->email,
                     'password' => bcrypt($this->registerForm->password),
+                    'image' => 'https://ui-avatars.com/api/?name=' . $this->registerForm->username . '&background=random&rounded=true&size=112'
                 ]);
 
                 $user->appearance()->create();
