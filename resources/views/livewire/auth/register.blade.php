@@ -1,4 +1,7 @@
 <div>
+    @if (session()->has('message'))
+        @include('components.layouts.message')
+    @endif
     <form wire:submit="register">
         Username
         <input type="text" wire:model.blur="registerForm.username">
@@ -21,5 +24,8 @@
                 {{ $message }}
             @enderror
         </div>
+        <br>
+        <button type="submit">Register</button>
+        <small>Already have an account? <a href="{{ route('login') }}">login</a></small>
     </form>
 </div>
