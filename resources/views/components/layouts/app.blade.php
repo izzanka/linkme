@@ -21,11 +21,11 @@
         <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
               <div class="col-md-3 mb-md-0">
-                    <a href="/" class="text-decoration-none text-dark"><h3><b>LinkMe</b></h3></a>
+                    <a href="/" wire:navigate class="text-decoration-none text-dark"><h3><b>LinkMe</b></h3></a>
               </div>
               <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-dark me-2">Login</button>
-                <button type="button" class="btn btn-outline-dark">Register</button>
+                <a type="button" class="btn btn-outline-dark me-2" href="{{ route('login') }}" wire:navigate>Login</a>
+                <a type="button" class="btn btn-outline-dark" href="{{ route('register') }}" wire:navigate>Register</a>
               </div>
             </header>
         </div>

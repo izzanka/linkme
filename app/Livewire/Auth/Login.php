@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public LoginForm $loginForm;
+    public LoginForm $form;
 
     public function login()
     {
@@ -17,7 +17,7 @@ class Login extends Component
 
         try {
 
-            if(Auth::attempt(['email' => $this->loginForm->email, 'password' => $this->loginForm->password], $this->loginForm->remember)){
+            if(Auth::attempt(['email' => $this->form->email, 'password' => $this->form->password], $this->form->remember)){
                 return redirect()->route('links.index');
             }
 

@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class Register extends Component
 {
-    public RegisterForm $registerForm;
+    public RegisterForm $form;
 
     public function register()
     {
@@ -23,11 +23,11 @@ class Register extends Component
             DB::transaction(function()
             {
                 $user = User::create([
-                    'username' => $this->registerForm->username,
-                    'username_slug' => Str::slug($this->registerForm->username),
-                    'email' => $this->registerForm->email,
-                    'password' => bcrypt($this->registerForm->password),
-                    'image' => 'https://ui-avatars.com/api/?name=' . $this->registerForm->username . '&background=random&rounded=true&size=112'
+                    'username' => $this->form->username,
+                    'username_slug' => Str::slug($this->form->username),
+                    'email' => $this->form->email,
+                    'password' => bcrypt($this->form->password),
+                    'image' => 'https://ui-avatars.com/api/?name=' . $this->form->username . '&background=random&rounded=true&size=112'
                 ]);
 
                 $user->appearance()->create();
