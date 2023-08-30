@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Home;
+use App\Livewire\User\Link;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
 
-Route::get('/login', Login::class)->name('login');
-Route::get('/register', Register::class)->name('register');
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('/links', function(){
-        return 'test';
-    })->name('links.index');
+Route::middleware('guest')->group(function(){
+    Route::get('/login', Login::class)->name('login');
+    Route::get('/register', Register::class)->name('register');
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/links', Link::class)->name('links.index');
 });
