@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string('title', 15);
             $table->string('url', 225);
-            $table->boolean('isActive')->default(false);
+            $table->boolean('is_active')->default(false);
+            $table->boolean('is_icon')->default(false);
             $table->bigInteger('total_clicks')->unsigned()->default(0);
             $table->timestamps();
         });

@@ -25,8 +25,8 @@
                 <div class="col-12">
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($registeredUsers as $user)
-                            <a target="_blank" href="" alt="preview-image">
-                                <img loading="lazy" class="avatar avatar-xl rounded-circle" src="{{ $user->image }}" alt="profile-image" width="112" height="112">
+                            <a target="_blank" href="">
+                                <img loading="lazy" class="avatar avatar-xl rounded-circle me-2" src="{{ $user->image }}" alt="profile-image">
                             </a>
                         @endforeach
                     </marquee>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-6 mt-4">
                         <div class="input-icon">
-                            <input type="text" value="" class="form-control form-control-rounded" placeholder="Search…" wire:model.live="search"/>
+                            <input type="text" value="" class="form-control form-control-rounded" placeholder="Search by username…" wire:model.live="search"/>
                             <span class="input-icon-addon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="mt-2 mb-4">
-                    <div class="text-center mt-3 mb-2">
+                    <div class="text-center mt-3">
                         <div wire:loading wire:target="search">
                             <div class="spinner-border text-white"></div>
                         </div>

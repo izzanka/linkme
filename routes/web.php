@@ -3,8 +3,11 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Home;
-use App\Livewire\User\Link;
+use App\Livewire\User\Link\Index as LinkIndex;
+use App\Livewire\User\Appearance\Index as AppearanceIndex;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +29,15 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/links', Link::class)->name('links.index');
+    Route::get('/links', LinkIndex::class)->name('links.index');
+    Route::get('/appearances', AppearanceIndex::class)->name('appearances.index');
+    Route::get('/logout', function(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home');
+    })->name('logout');
 });

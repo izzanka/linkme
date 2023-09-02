@@ -3,61 +3,82 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                @if (session()->has('message'))
-                    @include('components.layouts.message')
-                @endif
-                <div class="card rounded-3">
+                <div class="mt-3">
+                    @if (session()->has('message'))
+                        @include('components.layouts.alert')
+                    @endif
+                </div>
+                <div class="card mt-3 rounded-4">
                     <div class="card-body">
                         <div class="container">
-                            <div class="text-center mt-3">
-                                <h4><b>Login to your account</b></h4>
-                            </div>
-                            <form wire:submit="login" class="mt-4">
-                                <div class="input-group has-validation mb-3">
-                                    <div class="form-floating ms-4 me-4 @error('form.email') is-invalid @enderror">
-                                        <input type="email" class="form-control @error('form.email') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" wire:model.blur="form.email">
-                                        <label for="floatingInput">Email address</label>
-                                    </div>
-                                    @error('form.email')
-                                        <div class="invalid-feedback ms-4">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                            <h2 class="mt-2 mb-2 text-center"><strong>Sign in</strong></h2>
+                            <form wire:submit="login">
+                                <label class="form-label mt-4 required"><strong>Email address</strong></label>
+                                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
+                                        </svg>
+                                    </span>
+                                    <input type="email" class="form-control @error('form.email') is-invalid @enderror" wire:model.blur="form.email" placeholder="Email address" />
                                 </div>
-
-                                <div class="input-group has-validation mb-3">
-                                    <div class="form-floating ms-4 me-4 @error('form.password') is-invalid @enderror">
-                                        <input type="password" class="form-control @error('form.password') is-invalid @enderror" id="floatingPassword" placeholder="Password" wire:model.blur="form.password">
-                                        <label for="floatingPassword">Password</label>
-                                    </div>
-                                    @error('form.password')
-                                        <div class="invalid-feedback ms-4">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                @error('form.email')
+                                    <div class="mt-1 text-danger">{{ $message }}</div>
+                                @enderror
+                                <label class="form-label mt-3 required"><strong>Password</strong></label>
+                                <div class="input-icon">
+                                    <span class="input-icon-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"></path>
+                                            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+                                            <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+                                        </svg>
+                                    </span>
+                                    <input type="password" class="form-control @error('form.password') is-invalid @enderror" wire:model.blur="form.password" placeholder="Password" />
                                 </div>
-
-                                <div class="form-check mt-4 ms-4">
-                                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" wire:model="form.remember">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                      Remember me on this device
+                                @error('form.password')
+                                    <div class="mt-1 text-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="mt-3">
+                                    <label class="form-check">
+                                      <input type="checkbox" class="form-check-input" wire:model="remember"/>
+                                      <span class="form-check-label">Remember me on this device</span>
                                     </label>
-                                  </div>
-                                <div class="mt-4 ms-4 me-4 d-grid">
-                                    <button type="submit" class="btn btn-primary rounded-4">Login</button>
                                 </div>
-                                <div class="ms-4 me-4">
-                                    <hr>
-                                </div>
-                                <div class="mt-2 ms-4 me-4 d-grid mb-2">
-                                    <button class="btn btn-danger rounded-4">Login with google</button>
+                                <div class="mt-4 text-center">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <div wire:loading.remove wire:target="login">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                                                <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                                            </svg>
+                                        </div>
+                                        <div wire:loading wire:target="login">
+                                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        </div>
+                                        Sign in
+                                    </button>
                                 </div>
                             </form>
+                            <div class="hr-text">OR</div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-danger w-100 mb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
+                                     </svg>
+                                    Sign in with Google
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    Doesn't have an account yet? <a href="{{ route('register') }}" wire:navigate>Register</a>
+                    Doesn't have an account yet? <a href="{{ route('register') }}" wire:navigate>Sign up</a>
                 </div>
             </div>
             <div class="col-3"></div>

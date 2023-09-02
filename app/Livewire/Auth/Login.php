@@ -18,7 +18,7 @@ class Login extends Component
         try {
 
             if(Auth::attempt(['email' => $this->form->email, 'password' => $this->form->password], $this->form->remember)){
-                return redirect()->route('links.index');
+                return $this->redirect(route('links.index'), navigate: true);
             }
 
             session()->flash('message', 'Email or password is wrong.');
@@ -28,7 +28,7 @@ class Login extends Component
         }
     }
 
-    #[Title('Login | LinkMe')]
+    #[Title('Sign in | LinkMe')]
     public function render()
     {
         return view('livewire.auth.login');
