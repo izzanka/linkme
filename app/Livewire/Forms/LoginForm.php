@@ -7,12 +7,12 @@ use Livewire\Form;
 
 class LoginForm extends Form
 {
-    #[Rule('required|email|max:255')]
+    #[Rule(['required','email','max:255'])]
     public $email = '';
 
-    #[Rule('required|max:255')]
+    #[Rule(['required','max:255'])]
     public $password = '';
 
-    #[Rule('required|boolean')]
+    #[Rule(['required','boolean'])]
     public $remember = false;
 }

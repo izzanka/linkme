@@ -24,7 +24,7 @@ class Login extends Component
             session()->flash('message', 'Email or password is wrong.');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Something wrong.');
+            session()->flash('message', 'Login error, please try again later.');
         }
     }
 

@@ -9,7 +9,7 @@ use Livewire\Attributes\On;
 class Create extends Component
 {
     public LinkForm $form;
-    public $total_links;
+    public int $total_links = 0;
 
     #[On('link-created')]
     #[On('link-deleted')]
@@ -39,7 +39,7 @@ class Create extends Component
             $this->form->reset();
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Something wrong! please try again later.');
+            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when creating link, please try again later.');
         }
     }
 

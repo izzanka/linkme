@@ -7,9 +7,9 @@ use Livewire\Attributes\Title;
 
 class Index extends Component
 {
-    public $ctr = 0;
-    public $total_views = 0;
-    public $total_clicks = 0;
+    public int $ctr = 0;
+    public int $total_views = 0;
+    public int $total_clicks = 0;
 
     public function mount()
     {

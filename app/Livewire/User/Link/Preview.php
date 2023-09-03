@@ -9,6 +9,7 @@ class Preview extends Component
 {
     #[On('link-updated')]
     #[On('link-deleted')]
+    #[On('appearance-updated')]
     public function render()
     {
         return view('livewire.user.link.preview',[

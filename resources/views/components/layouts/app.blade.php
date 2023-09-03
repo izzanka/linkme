@@ -57,13 +57,13 @@
                                     </svg>
                                     Links
                                 </a>
-                                <a href="" class="btn btn-outline-primary btn-pill {{ request()->route()->named('appearances.index') ? 'active' : ''}}">
+                                <a wire:navigate href="{{ route('appearances.index') }}" class="btn btn-outline-primary btn-pill {{ request()->route()->named('appearances.index') ? 'active' : ''}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M12 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
                                         <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"></path>
                                     </svg>
-                                    Appearance
+                                    Appearances
                                 </a>
                                 <a href="" class="btn btn-outline-primary btn-pill">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -87,7 +87,6 @@
             </header>
             <div class="page-wrapper">
                 {{ $slot }}
-                @yield('section')
             </div>
             <footer class="footer footer-transparent d-print-none">
                 <div class="container-xl mt-2">

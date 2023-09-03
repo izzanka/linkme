@@ -37,7 +37,7 @@ class Register extends Component
             });
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Something wrong.');
+            session()->flash('message', 'Register error, please try again later.');
         }
     }
 

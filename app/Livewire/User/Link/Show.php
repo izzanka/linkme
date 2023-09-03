@@ -19,9 +19,9 @@ class Show extends Component
 
     public function addIconLogo(Link $link)
     {
-        try {
+        $this->authorize('update', $link);
 
-            $this->authorize('update', $link);
+        try {
 
             if($link->is_icon){
                 $link->update(['is_icon' => 0]);
@@ -35,22 +35,23 @@ class Show extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Something wrong! please try again later.' . $th->getMessage());
+            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when adding icon logo to link, please try again later.');
         }
     }
 
     public function delete(Link $link)
     {
+        $this->authorize('update', $link);
+
         try {
 
-            $this->authorize('update', $link);
-
             $link->delete();
+
             $this->reset();
             $this->dispatch('link-deleted');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Something wrong! please try again later.');
+            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when deleting link, please try again later.');
         }
     }
 

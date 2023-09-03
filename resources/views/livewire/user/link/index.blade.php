@@ -1,6 +1,6 @@
 <div>
     <div class="container mt-3">
-        <div class="mt-2">
+        <div class="mt-1">
             @if (session()->has('message'))
                 @include('components.layouts.alert')
             @endif
