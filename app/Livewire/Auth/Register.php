@@ -7,11 +7,19 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Register extends Component
 {
-    public RegisterForm $form;
+    #[Rule(['required','string','max:19','unique:users,username'])]
+    public $username = '';
+
+    #[Rule(['required','email','max:255','unique:users,email'])]
+    public $email = '';
+
+    #[Rule(['required', 'min:8', 'max:255'])]
+    public $password = '';
 
     public function register()
     {
@@ -22,11 +30,11 @@ class Register extends Component
             DB::transaction(function()
             {
                 $user = User::create([
-                    'username' => ucfirst($this->form->username),
-                    'username_slug' => str()->slug($this->form->username),
-                    'email' => $this->form->email,
-                    'password' => bcrypt($this->form->password),
-                    'image' => 'https://ui-avatars.com/api/?name=' . $this->form->username . '&background=random&rounded=true&size=112'
+                    'username' => ucfirst($this->username),
+                    'username_slug' => str()->slug($this->username),
+                    'email' => $this->email,
+                    'password' => bcrypt($this->password),
+                    'image' => 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true&size=112'
                 ]);
 
                 $user->appearance()->create();

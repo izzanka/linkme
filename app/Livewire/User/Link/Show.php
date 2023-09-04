@@ -12,6 +12,7 @@ class Show extends Component
 
     #[On('link-created')]
     #[On('link-deleted')]
+    #[On('link-updated')]
     public function mount()
     {
         $this->links = auth()->user()->links()->latest()->get();
@@ -31,8 +32,8 @@ class Show extends Component
                 }
             }
 
-            $this->dispatch('link-updated');
             $this->dispatch('link-created');
+            $this->dispatch('link-updated');
 
         } catch (\Throwable $th) {
             return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when adding icon logo to link, please try again later.');
@@ -46,7 +47,6 @@ class Show extends Component
         try {
 
             $link->delete();
-
             $this->reset();
             $this->dispatch('link-deleted');
 

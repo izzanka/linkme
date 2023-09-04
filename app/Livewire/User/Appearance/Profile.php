@@ -12,13 +12,14 @@ class Profile extends Component
 
     #[Rule(['required','image','max:2048'])]
     public $image = null;
-    public int $image_iteration = 0;
 
     #[Rule(['required','max:19','string'])]
     public string $username = '';
 
     #[Rule(['string','max:40'])]
-    public $bio;
+    public $bio = null;
+
+    public int $image_iteration = 0;
 
     public function mount()
     {
@@ -28,6 +29,8 @@ class Profile extends Component
 
     public function updated($name, $value)
     {
+        $this->validateOnly($name);
+
         try {
 
             auth()->user()->update([
@@ -55,7 +58,6 @@ class Profile extends Component
                 'image' => $image
             ]);
 
-            $this->reset('image');
             $this->image_iteration++;
 
             $this->dispatch('appearance-updated');

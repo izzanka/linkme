@@ -4,19 +4,7 @@
         @foreach ($links as $index => $link)
             <div class="card mt-3 rounded-4" wire:key="{{ $link->id }}">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-11">
-                            <strong>{{ $link->title }}</strong>
-                        </div>
-                        <div class="col-1">
-                            <livewire:user.link.status :$link :key="$link->id" />
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        <div class="col-11">
-                            <strong>{{ $link->url }}</strong>
-                        </div>
-                    </div>
+                    <livewire:user.link.edit :$link :key="$link->id" />
                     <div class="row mt-4">
                         <div class="col-10">
                             <div class="row">

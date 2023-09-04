@@ -31,6 +31,8 @@ class Index extends Component
 
     public function updated($name, $value)
     {
+        $this->validateOnly($name);
+
         try {
 
             auth()->user()->appearance()->update([
@@ -83,7 +85,6 @@ class Index extends Component
     }
 
     #[Title('Appearances | LinkMe')]
-    #[On('appearance-updated')]
     public function render()
     {
         return view('livewire.user.appearance.index');

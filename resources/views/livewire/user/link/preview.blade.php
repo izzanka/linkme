@@ -23,22 +23,26 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="row mt-3 mb-3">
+                        <div class="mt-3 mb-3">
                             @foreach ($links as $link)
-                                <div class="col-2"></div>
-                                    <div class="col-8">
-                                        <div class="d-grid">
-                                            <a href="{{ $link->url }}" target="_blank" class="mt-3 btn btn-lg text-nowrap {{ auth()->user()->appearance->button_shadow }} rounded-{{ auth()->user()->appearance->button_rounded }}" style="@if (auth()->user()->appearance->button_outline == true) border-color: {{ auth()->user()->appearance->button_color }}  @else background-color: {{ auth()->user()->appearance->button_color }} @endif">
-                                                @if ($link->is_icon)
-                                                    <img src="{{ asset('storage/images/icons/brand-' . lcfirst($link->title) . '.svg') }}" alt="" class="me-2">
-                                                @endif
-                                                <h4 style="color: {{ auth()->user()->appearance->button_font_color }}" class="mt-2 mb-2">
-                                                    {{ $link->title }}
-                                                </h4>
-                                            </a>
+                                <div wire:key="{{ $link->id }}">
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-8">
+                                            <div class="d-grid">
+                                                <a href="{{ $link->url }}" class="mt-3 btn btn-lg text-nowrap {{ auth()->user()->appearance->button_shadow }} rounded-{{ auth()->user()->appearance->button_rounded }}" style="@if (auth()->user()->appearance->button_outline == true) border-color: {{ auth()->user()->appearance->button_color }}  @else background-color: {{ auth()->user()->appearance->button_color }} @endif">
+                                                    @if ($link->is_icon)
+                                                        <img src="{{ asset('storage/images/icons/brand-' . lcfirst($link->title) . '.svg') }}" alt="logo-icon" class="me-2">
+                                                    @endif
+                                                    <h4 style="color: {{ auth()->user()->appearance->button_font_color }}" class="mt-2 mb-2">
+                                                        {{ $link->title }}
+                                                    </h4>
+                                                </a>
+                                            </div>
                                         </div>
+                                        <div class="col-2"></div>
                                     </div>
-                                <div class="col-2"></div>
+                                </div>
                             @endforeach
                         </div>
                         <div class="row mt-5">

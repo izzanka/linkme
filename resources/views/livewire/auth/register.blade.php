@@ -23,9 +23,9 @@
                                             <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"></path>
                                          </svg>
                                     </span>
-                                    <input type="text" class="form-control @error('form.username') is-invalid @enderror" wire:model.blur="form.username" placeholder="Username" />
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" wire:model.blur="username" placeholder="Username" />
                                 </div>
-                                @error('form.username')
+                                @error('username')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                                 <label class="form-label mt-3 required"><strong>Email address</strong></label>
@@ -37,9 +37,9 @@
                                             <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
                                         </svg>
                                     </span>
-                                    <input type="email" class="form-control @error('form.email') is-invalid @enderror" wire:model.blur="form.email" placeholder="Email address" />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" wire:model.blur="email" placeholder="Email address" />
                                 </div>
-                                @error('form.email')
+                                @error('email')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                                 <label class="form-label mt-3 required"><strong>Password</strong></label>
@@ -52,9 +52,9 @@
                                             <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
                                         </svg>
                                     </span>
-                                    <input type="password" class="form-control @error('form.password') is-invalid @enderror" wire:model.blur="form.password" placeholder="Password" />
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" wire:model.blur="password" placeholder="Password" />
                                 </div>
-                                @error('form.password')
+                                @error('password')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="mt-3 mb-2 text-center">

@@ -7,22 +7,23 @@ use Livewire\Component;
 
 class Status extends Component
 {
-    public Link $link;
+    public $link;
     public bool $is_active = false;
 
-    public function mount()
+    public function mount(Link $link)
     {
-        $this->is_active = $this->link->is_active;
+        $this->link = $link;
+        $this->is_active = $link->is_active;
     }
 
-    public function updating($name, $value)
+    public function updated()
     {
         $this->authorize('update', $this->link);
 
         try {
 
             $this->link->update([
-                $name => $value
+               'is_active' => $this->is_active,
             ]);
 
             $this->dispatch('link-updated');

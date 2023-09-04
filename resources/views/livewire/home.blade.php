@@ -25,9 +25,9 @@
                 <div class="col-12">
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($registeredUsers as $user)
-                            <a target="_blank" href="">
-                                <img loading="lazy" @if($user->image == null) src="https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112" @else src="{{ $user->image }}" @endif class="avatar avatar-lg rounded-circle me-2" alt="image-profile">
-                            </a>
+                                <a target="_blank" href="">
+                                    <img loading="lazy" @if($user->image == null) src="https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112" @else src="{{ $user->image }}" @endif class="avatar avatar-lg rounded-circle me-2" alt="image-profile">
+                                </a>
                         @endforeach
                     </marquee>
                 </div>
@@ -74,7 +74,7 @@
                                 </div>
                             @endif
                             @foreach($users as $user)
-                                <div class="col-6">
+                                <div class="col-6" wire:key={{ $user->id }}>
                                     <div class="card rounded-4 mt-3">
                                         <div class="card-body">
                                             <div class="row">

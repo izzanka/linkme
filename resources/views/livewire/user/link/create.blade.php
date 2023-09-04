@@ -22,16 +22,16 @@
                     <form wire:submit="store">
                         <div class="row mt-4">
                             <div class="col-9">
-                                <input type="text" class="form-control @error('form.title') is-invalid @enderror" wire:model.blur="form.title" placeholder="Title *" />
-                                @error('form.title')
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" wire:model.blur="title" placeholder="Title *" />
+                                @error('title')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <div class="row mt-3 mb-3">
                             <div class="col-9">
-                                <input type="text" class="form-control @error('form.url') is-invalid @enderror" wire:model.blur="form.url" placeholder="URL *" />
-                                @error('form.url')
+                                <input type="text" class="form-control @error('url') is-invalid @enderror" wire:model.blur="url" placeholder="URL *" />
+                                @error('url')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

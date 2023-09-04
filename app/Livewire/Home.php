@@ -9,8 +9,9 @@ use Livewire\Component;
 
 class Home extends Component
 {
-    public $registeredUsers = 0;
-    public $totalRegisteredUser = 0;
+    public $registeredUsers;
+    public int $totalRegisteredUser = 0;
+
     #[Url]
     public $search = '';
     protected $queryString = [

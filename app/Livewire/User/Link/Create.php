@@ -5,10 +5,16 @@ namespace App\Livewire\User\Link;
 use App\Livewire\Forms\LinkForm;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Rule;
 
 class Create extends Component
 {
-    public LinkForm $form;
+    #[Rule(['required','string','max:15'])]
+    public string $title = '';
+
+    #[Rule(['required','url','active_url','max:255'])]
+    public string $url = '';
+
     public int $total_links = 0;
 
     #[On('link-created')]
@@ -22,7 +28,7 @@ class Create extends Component
     {
         if($this->total_links >= 5)
         {
-            $this->form->reset();
+            $this->reset(['title','url']);
             session()->flash('message', 'Can only have 5 links.');
         }
 
@@ -31,12 +37,12 @@ class Create extends Component
         try {
 
             auth()->user()->links()->create([
-                'title' => ucfirst($this->form->title),
-                'url' => $this->form->url
+                'title' => ucfirst($this->title),
+                'url' => $this->url
             ]);
 
+            $this->reset(['title','url']);
             $this->dispatch('link-created');
-            $this->form->reset();
 
         } catch (\Throwable $th) {
             return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when creating link, please try again later.');

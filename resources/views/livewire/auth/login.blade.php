@@ -22,9 +22,9 @@
                                             <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
                                         </svg>
                                     </span>
-                                    <input type="email" class="form-control @error('form.email') is-invalid @enderror" wire:model.blur="form.email" placeholder="Email address" />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" wire:model.blur="email" placeholder="Email address" />
                                 </div>
-                                @error('form.email')
+                                @error('email')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                                 <label class="form-label mt-3 required"><strong>Password</strong></label>
@@ -37,14 +37,14 @@
                                             <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
                                         </svg>
                                     </span>
-                                    <input type="password" class="form-control @error('form.password') is-invalid @enderror" wire:model.blur="form.password" placeholder="Password" />
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" wire:model.blur="password" placeholder="Password" />
                                 </div>
-                                @error('form.password')
+                                @error('password')
                                     <div class="mt-1 text-danger">{{ $message }}</div>
                                 @enderror
                                 <div class="mt-3">
                                     <label class="form-check">
-                                      <input type="checkbox" class="form-check-input" wire:model="remember"/>
+                                      <input type="checkbox" class="form-check-input" wire:model.blur="remember"/>
                                       <span class="form-check-label">Remember me on this device</span>
                                     </label>
                                 </div>
