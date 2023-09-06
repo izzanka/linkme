@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Home;
 use App\Livewire\User\Link\Index as LinkIndex;
 use App\Livewire\User\Appearance\Index as AppearanceIndex;
+use App\Livewire\User\Show;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +24,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', Home::class)->name('home');
 
-
 Route::middleware('guest')->group(function(){
     Route::get('/login', Login::class)->name('login');
     Route::get('/register', Register::class)->name('register');
@@ -30,14 +31,9 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware('auth')->group(function(){
     Route::get('/links', LinkIndex::class)->name('links.index');
-    Route::get('/appearances', AppearanceIndex::class)->name('appearances.index');
-    Route::get('/logout', function(Request $request){
-
-        Auth::logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('home');
-    })->name('logout');
+    Route::get('/appearance', AppearanceIndex::class)->name('appearance.index');
+    Route::post('/sign-out', [UserController::class, 'logout'])->name('logout');
 });
+
+Route::get('/{user}', [UserController::class, 'show'])->name('users.show');
+

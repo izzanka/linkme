@@ -3,7 +3,6 @@
 namespace App\Livewire\User\Appearance;
 
 use Livewire\Attributes\Rule;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -68,10 +67,8 @@ class Index extends Component
                 auth()->user()->appearance()->update([
                     'button_rounded' => $size,
                 ]);
-            }
 
-            if($type == 'shadow')
-            {
+            }else{
                 auth()->user()->appearance()->update([
                     'button_shadow' => $size,
                 ]);
@@ -84,7 +81,7 @@ class Index extends Component
         }
     }
 
-    #[Title('Appearances | LinkMe')]
+    #[Title('Appearance | LinkMe')]
     public function render()
     {
         return view('livewire.user.appearance.index');

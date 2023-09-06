@@ -4,7 +4,6 @@ namespace App\Livewire\User\Link;
 
 use App\Models\Link;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -36,9 +35,10 @@ class Edit extends Component
 
         try {
 
+            $this->title = ucfirst($this->title);
+
             $this->link->update([
-                'title' => ucfirst($this->title),
-                'url' => $this->url,
+                $name => $value
             ]);
 
             if($name == 'title')

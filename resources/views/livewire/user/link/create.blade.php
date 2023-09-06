@@ -24,7 +24,9 @@
                             <div class="col-9">
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" wire:model.blur="title" placeholder="Title *" />
                                 @error('title')
-                                    <div class="mt-1 text-danger">{{ $message }}</div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                         </div>
@@ -32,7 +34,9 @@
                             <div class="col-9">
                                 <input type="text" class="form-control @error('url') is-invalid @enderror" wire:model.blur="url" placeholder="URL *" />
                                 @error('url')
-                                    <div class="mt-1 text-danger">{{ $message }}</div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                             <div class="col-3">

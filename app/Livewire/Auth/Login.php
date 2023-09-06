@@ -26,7 +26,7 @@ class Login extends Component
         try {
 
             if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)){
-                return $this->redirect(route('links.index'), navigate: true);
+                return $this->redirect(route('links.index'));
             }
 
             session()->flash('message', 'Email or password is wrong.');

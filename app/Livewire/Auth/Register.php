@@ -41,7 +41,7 @@ class Register extends Component
 
                 Auth::login($user);
 
-                return $this->redirect(route('links.index'), navigate: true);
+                return $this->redirect(route('links.index'));
             });
 
         } catch (\Throwable $th) {

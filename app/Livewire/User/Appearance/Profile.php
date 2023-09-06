@@ -2,24 +2,23 @@
 
 namespace App\Livewire\User\Appearance;
 
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 
 class Profile extends Component
 {
-    use WithFileUploads;
-
-    #[Rule(['required','image','max:2048'])]
-    public $image = null;
-
-    #[Rule(['required','max:19','string'])]
     public string $username = '';
 
-    #[Rule(['string','max:40'])]
     public $bio = null;
 
-    public int $image_iteration = 0;
+    public function rules()
+    {
+        return [
+            'username' => ['required','max:19','string', Rule::unique('users')->ignore(auth()->id())],
+            'bio' => ['string','max:40'],
+        ];
+    }
 
     public function mount()
     {
@@ -27,14 +26,15 @@ class Profile extends Component
         $this->bio = auth()->user()->bio;
     }
 
-    public function updated($name, $value)
+    public function updatedUsername()
     {
-        $this->validateOnly($name);
+        $this->validateOnly('username');
 
         try {
 
             auth()->user()->update([
-                $name => $value,
+                'username' => $this->username,
+                'username_slug' => str()->slug($this->username),
             ]);
 
             $this->dispatch('appearance-updated');
@@ -44,29 +44,24 @@ class Profile extends Component
         }
     }
 
-    public function updateImage()
+    public function updatedBio()
     {
-        $this->validate();
+        $this->validateOnly('bio');
 
         try {
 
-            $temp_image = $this->image->store('public/images/photos');
-
-            $image = str_replace('public','storage', $temp_image);
-
             auth()->user()->update([
-                'image' => $image
+                'bio' => $this->bio,
             ]);
-
-            $this->image_iteration++;
 
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            return $this->redirect(route('appearances.index'), navigate: true)->with('Erro when updating profile image, please try again later.');
+            session()->flash('message', 'Error when updating profile, please try again later.');
         }
     }
 
+    #[On('appearance-updated')]
     public function render()
     {
         return view('livewire.user.appearance.profile');
