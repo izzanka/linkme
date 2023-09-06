@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User\Link;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 
@@ -12,6 +13,7 @@ class Index extends Component
     public int $total_views = 0;
     public int $total_clicks = 0;
 
+    #[On('link-deleted')]
     public function mount()
     {
         $this->total_views = auth()->user()->total_views;

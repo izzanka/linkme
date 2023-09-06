@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-6 mt-4 text-center mb-4">
-                    <img loading="lazy" src="" class="rounded-4 bg-light border border-dark" alt="preview" style="height: 600px">
+                    <img loading="lazy" src="{{ asset('storage/images/photos/home.jpeg') }}" class="rounded-4 bg-light border border-dark" alt="preview" style="height: 600px">
                 </div>
             </div>
         </div>
@@ -25,9 +25,9 @@
                 <div class="col-12">
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($registeredUsers as $user)
-                                <a target="_blank" href="{{ route('users.show', $user->username_slug) }}">
-                                    <span class="avatar avatar-xl rounded-circle me-2" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset($user->image) }} @endif)"></span>
-                                </a>
+                            <a target="_blank" href="{{ route('users.show', $user->username_slug) }}">
+                                <span class="avatar avatar-xl rounded-circle me-2" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset($user->image) }} @endif)"></span>
+                            </a>
                         @endforeach
                     </marquee>
                 </div>
@@ -80,7 +80,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-3">
-                                                        <span class="avatar avatar-xl rounded-circle" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset(auth()->user()->image) }} @endif)"></span>
+                                                        <span class="avatar avatar-xl rounded-circle" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset($user->image) }} @endif)"></span>
                                                     </div>
                                                     <div class="col-9 mt-3 mb-3">
                                                         <h2 class="text-dark">

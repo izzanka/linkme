@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', Home::class)->name('home');
+Route::redirect('/home', '/');
 
 Route::middleware('guest')->group(function(){
     Route::get('/login', Login::class)->name('login');
