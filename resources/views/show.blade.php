@@ -9,9 +9,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
     </head>
     <body style="background-color: {{ $background_color }}">
-        <div class="page">
-            <livewire:user.show :user="$username_slug" />
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+        <livewire:user.show :user="$username_slug" />
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
     </body>
 </html>

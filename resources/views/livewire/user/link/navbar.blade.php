@@ -23,7 +23,7 @@
             </svg>
             Open my LinkMe
         </a>
-        <a class="dropdown-item" href="">
+        <a class="dropdown-item" href="#" onclick="copyLink()">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M8 8m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"></path>
@@ -31,5 +31,12 @@
             </svg>
             Copy my LinkMe
         </a>
+        <script>
+            function copyLink(){
+                let url = "{{ route('users.show', auth()->user()->username_slug) }}";
+                navigator.clipboard.writeText(url);
+                alert("Link copied to clipboard.");
+            }
+        </script>
     </div>
 </div>

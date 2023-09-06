@@ -25,9 +25,8 @@
                 <div class="col-12">
                     <marquee behavior="scroll" direction="left" scrollamount="5">
                         @foreach ($registeredUsers as $user)
-                                <a target="_blank" href="">
+                                <a target="_blank" href="{{ route('users.show', $user->username_slug) }}">
                                     <span class="avatar avatar-xl rounded-circle me-2" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset($user->image) }} @endif)"></span>
-                                    {{-- <img loading="lazy" @if($user->image == null) src="https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112" @else src="{{ $user->image }}" @endif class="avatar avatar-lg rounded-circle me-2" alt="image-profile"> --}}
                                 </a>
                         @endforeach
                     </marquee>
@@ -77,22 +76,23 @@
                             @foreach($users as $user)
                                 <div class="col-6" wire:key={{ $user->id }}>
                                     <div class="card rounded-4 mt-3">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <span class="avatar avatar-xl rounded-circle" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset(auth()->user()->image) }} @endif)"></span>
-                                                    {{-- <img loading="lazy" @if($user->image == null) src="https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112" @else src="{{ $user->image }}" @endif class="avatar avatar-lg rounded-circle" alt="image-profile"> --}}
-                                                </div>
-                                                <div class="col-9 mt-3 mb-3">
-                                                    <h2 class="text-dark">
-                                                        <b>{{ $user->username }}</b><br>
-                                                    </h2>
-                                                    <h4 class="text-secondary">
-                                                        {{ $user->bio }}
-                                                    </h4>
+                                        <a href="{{ route('users.show', $user->username_slug) }}" target="_blank">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <span class="avatar avatar-xl rounded-circle" style="background-image: url(@if($user->image == null) 'https://ui-avatars.com/api/?name={{ $user->username }}&background=206BC4&color=fff&rounded=true&size=112' @else {{ asset(auth()->user()->image) }} @endif)"></span>
+                                                    </div>
+                                                    <div class="col-9 mt-3 mb-3">
+                                                        <h2 class="text-dark">
+                                                            <b>{{ $user->username }}</b><br>
+                                                        </h2>
+                                                        <h4 class="text-secondary">
+                                                            {{ $user->bio }}
+                                                        </h4>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
