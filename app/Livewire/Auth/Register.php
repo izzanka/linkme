@@ -34,14 +34,13 @@ class Register extends Component
                     'username_slug' => str()->slug($this->username),
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
-                    'image' => 'https://ui-avatars.com/api/?name=' . $this->username . '&background=random&rounded=true&size=112'
                 ]);
 
                 $user->appearance()->create();
 
                 Auth::login($user);
 
-                return $this->redirect(route('links.index'));
+                $this->redirect(route('links.index'));
             });
 
         } catch (\Throwable $th) {

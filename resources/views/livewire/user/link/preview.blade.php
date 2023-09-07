@@ -35,7 +35,7 @@
                                                         <img src="{{ asset('storage/images/icons/brand-' . lcfirst($link->title) . '.svg') }}" alt="logo-icon" class="me-2">
                                                     @endif
                                                     <h4 style="color: {{ auth()->user()->appearance->button_font_color }}" class="mt-2 mb-2">
-                                                        {{ $link->title }}
+                                                        {{ ucfirst($link->title) }}
                                                     </h4>
                                                 </a>
                                             </div>

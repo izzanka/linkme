@@ -23,30 +23,42 @@ class Edit extends Component
     public function mount(Link $link)
     {
         $this->id = $link->id;
-        $this->title = $link->title;
+        $this->title = ucfirst($link->title);
         $this->url = $link->url;
-
         $this->link = $link;
     }
 
-    public function updated($name, $value)
+    public function updatedUrl($name, $value)
     {
-        $this->validateOnly($name);
+        $this->validateOnly('url');
 
         try {
 
-            $this->title = ucfirst($this->title);
-
             $this->link->update([
-                $name => $value
+                'url' => $this->url,
             ]);
 
-            if($name == 'title')
-            {
-                if($this->link->is_icon){
-                    if(!file_exists(public_path('storage/images/icons/brand-' . lcfirst($this->title) . '.svg'))){
-                        $this->link->update(['is_icon' => 0]);
-                    }
+            $this->dispatch('link-updated');
+            $this->dispatch('link-created');
+
+        } catch (\Throwable $th) {
+            session()->flash('message', 'Error when updating link, please try again later.');
+        }
+    }
+
+    public function updatedTitle()
+    {
+        $this->validateOnly('title');
+
+        try {
+
+            $this->link->update([
+                'title' => $this->title,
+            ]);
+
+            if($this->link->is_icon){
+                if(!file_exists(public_path('storage/images/icons/brand-' . lcfirst($this->title) . '.svg'))){
+                    $this->link->update(['is_icon' => 0]);
                 }
             }
 

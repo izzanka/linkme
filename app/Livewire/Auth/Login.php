@@ -26,10 +26,10 @@ class Login extends Component
         try {
 
             if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)){
-                return $this->redirect(route('links.index'));
+                $this->redirect(route('links.index'));
+            }else{
+                session()->flash('message', 'Email or password is wrong.');
             }
-
-            session()->flash('message', 'Email or password is wrong.');
 
         } catch (\Throwable $th) {
             session()->flash('message', 'Login error, please try again later.');

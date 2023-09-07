@@ -36,7 +36,7 @@ class Create extends Component
         try {
 
             auth()->user()->links()->create([
-                'title' => ucfirst($this->title),
+                'title' => $this->title,
                 'url' => $this->url
             ]);
 

@@ -14,7 +14,7 @@
             <header class="navbar navbar-expand-md navbar-light d-print-none">
               <div class="container-xl">
                 <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                    <a href="{{ route('home') }}" wire:navigate>
+                    <a href="{{ route('home') }}">
                         LinkMe
                     </a>
                 </h1>
@@ -80,6 +80,7 @@
             <div class="page-wrapper">
                 {{ $slot }}
             </div>
+
             <footer class="footer footer-transparent d-print-none">
                 <div class="container-xl mt-2">
                   <div class="row text-center align-items-center flex-row-reverse">

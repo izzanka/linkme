@@ -16,14 +16,14 @@ class Status extends Component
         $this->is_active = $link->is_active;
     }
 
-    public function updated()
+    public function updated($name, $value)
     {
         $this->authorize('update', $this->link);
 
         try {
 
             $this->link->update([
-               'is_active' => $this->is_active,
+               $name => $value
             ]);
 
             $this->dispatch('link-updated');
