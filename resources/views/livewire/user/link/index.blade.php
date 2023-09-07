@@ -1,10 +1,5 @@
 <div>
     <div class="container mt-3">
-        <div class="mt-1">
-            @if (session()->has('message'))
-                @include('components.layouts.alert')
-            @endif
-        </div>
         <div class="row">
             <div class="col-6" x-data="{open: false}">
                 <div class="card rounded-4" @click.outside="open = false">

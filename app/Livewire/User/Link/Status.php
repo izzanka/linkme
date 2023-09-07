@@ -8,6 +8,7 @@ use Livewire\Component;
 class Status extends Component
 {
     public $link;
+
     public bool $is_active = false;
 
     public function mount(Link $link)
@@ -23,13 +24,16 @@ class Status extends Component
         try {
 
             $this->link->update([
-               $name => $value
+                $name => $value,
             ]);
 
             $this->dispatch('link-updated');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating link status, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update link status error',
+                'icon' => 'error',
+            ]);
         }
     }
 

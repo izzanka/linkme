@@ -7,6 +7,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ $title ?? 'LinkMe' }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
         <div class="page">
@@ -105,5 +106,13 @@
             </footer>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+        <script>
+            window.addEventListener('swal',function(e){
+                Swal.fire({
+                    'title': e.detail[0].title,
+                    'icon': e.detail[0].icon,
+                });
+            });
+        </script>
     </body>
 </html>

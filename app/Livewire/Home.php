@@ -10,17 +10,19 @@ use Livewire\Component;
 class Home extends Component
 {
     public $registeredUsers;
+
     public int $totalRegisteredUser = 0;
 
     #[Url]
     public $search = '';
+
     protected $queryString = [
         'search',
     ];
 
     public function mount()
     {
-        $this->registeredUsers = User::select('id','username','username_slug','bio','image')->latest()->take(10)->get();
+        $this->registeredUsers = User::select('id', 'username', 'username_slug', 'bio', 'image')->latest()->take(10)->get();
         $this->totalRegisteredUser = User::count();
     }
 
@@ -28,7 +30,7 @@ class Home extends Component
     public function render()
     {
         return view('livewire.home', [
-            'users' => User::select('id','username','username_slug','bio','image')->where('username', 'like', '%'.$this->search.'%')->latest()->get(),
+            'users' => User::select('id', 'username', 'username_slug', 'bio', 'image')->where('username', 'like', '%'.$this->search.'%')->latest()->get(),
         ]);
     }
 }

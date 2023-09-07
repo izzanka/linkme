@@ -5,13 +5,13 @@ namespace Tests\Feature\Livewire;
 use App\Livewire\Auth\Register;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
     use RefreshDatabase;
+
     private $email = 'test@gmail.com';
 
     public function test_can_view_register_page(): void
@@ -21,7 +21,7 @@ class RegisterTest extends TestCase
 
     public function test_can_register()
     {
-        Livewire::test(Register::class)->set('registerForm.username','test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register');
+        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register');
 
         $this->assertTrue(
             auth()->user()->email == $this->email
@@ -35,7 +35,7 @@ class RegisterTest extends TestCase
 
     public function test_is_redirected_after_register()
     {
-        Livewire::test(Register::class)->set('registerForm.username','test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register')->assertRedirect('/links');
+        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register')->assertRedirect('/links');
     }
 
     public function test_is_redirected_if_already_registered()

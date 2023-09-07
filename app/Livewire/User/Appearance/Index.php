@@ -8,16 +8,16 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    #[Rule(['required','size:7','starts_with:#'])]
+    #[Rule(['required', 'size:7', 'starts_with:#'])]
     public string $background_color = '';
 
-    #[Rule(['required','size:7','starts_with:#'])]
+    #[Rule(['required', 'size:7', 'starts_with:#'])]
     public string $button_color = '';
 
-    #[Rule(['required','size:7','starts_with:#'])]
+    #[Rule(['required', 'size:7', 'starts_with:#'])]
     public string $button_font_color = '';
 
-    #[Rule(['required','size:7','starts_with:#'])]
+    #[Rule(['required', 'size:7', 'starts_with:#'])]
     public string $font_color = '';
 
     public function mount()
@@ -41,34 +41,35 @@ class Index extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating appearance, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update appearance error',
+                'icon' => 'error',
+            ]);
         }
     }
 
     public function updateButton($type, $size)
     {
-        $types = ['fill','outline','shadow'];
-        $sizes = ['0','4','pill','shadow-sm','shadow','shadow-lg'];
+        $types = ['fill', 'outline', 'shadow'];
+        $sizes = ['0', '4', 'pill', 'shadow-sm', 'shadow', 'shadow-lg'];
 
-        if(!in_array($type, $types) || !in_array($size, $sizes))
-        {
+        if (! in_array($type, $types) || ! in_array($size, $sizes)) {
             session()->flash('message', 'Something wrong! please try again later.');
         }
 
         try {
 
-            if($type == 'fill' || $type == 'outline')
-            {
+            if ($type == 'fill' || $type == 'outline') {
                 auth()->user()->appearance()->update([
-                    'button_fill' => $type == "fill" ? true : false,
-                    'button_outline' => $type == "outline" ? true : false,
+                    'button_fill' => $type == 'fill' ? true : false,
+                    'button_outline' => $type == 'outline' ? true : false,
                 ]);
 
                 auth()->user()->appearance()->update([
                     'button_rounded' => $size,
                 ]);
 
-            }else{
+            } else {
                 auth()->user()->appearance()->update([
                     'button_shadow' => $size,
                 ]);
@@ -77,7 +78,10 @@ class Index extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating appearance, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update buttons style error',
+                'icon' => 'error',
+            ]);
         }
     }
 

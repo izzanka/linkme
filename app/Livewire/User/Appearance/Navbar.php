@@ -2,8 +2,8 @@
 
 namespace App\Livewire\User\Appearance;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class Navbar extends Component
 {

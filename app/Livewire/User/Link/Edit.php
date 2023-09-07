@@ -12,10 +12,10 @@ class Edit extends Component
     #[Locked]
     public $id;
 
-    #[Rule(['required','string','max:15'])]
+    #[Rule(['required', 'string', 'max:15'])]
     public $title;
 
-    #[Rule(['required','url','active_url','max:255'])]
+    #[Rule(['required', 'url', 'active_url', 'max:255'])]
     public $url;
 
     public $link;
@@ -23,7 +23,7 @@ class Edit extends Component
     public function mount(Link $link)
     {
         $this->id = $link->id;
-        $this->title = ucfirst($link->title);
+        $this->title = $link->title;
         $this->url = $link->url;
         $this->link = $link;
     }
@@ -42,7 +42,10 @@ class Edit extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating link, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update url error',
+                'icon' => 'error',
+            ]);
         }
     }
 
@@ -56,8 +59,8 @@ class Edit extends Component
                 'title' => $this->title,
             ]);
 
-            if($this->link->is_icon){
-                if(!file_exists(public_path('storage/images/icons/brand-' . lcfirst($this->title) . '.svg'))){
+            if ($this->link->is_icon) {
+                if (! file_exists(public_path('storage/images/icons/brand-'.lcfirst($this->title).'.svg'))) {
                     $this->link->update(['is_icon' => 0]);
                 }
             }
@@ -66,7 +69,10 @@ class Edit extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating link, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update title error',
+                'icon' => 'error',
+            ]);
         }
     }
 

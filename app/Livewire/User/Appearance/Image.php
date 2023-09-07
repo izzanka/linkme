@@ -2,24 +2,23 @@
 
 namespace App\Livewire\User\Appearance;
 
-use Livewire\Component;
-use Livewire\Attributes\Rule;
-use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
+use Livewire\Attributes\Rule;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Image extends Component
 {
     use WithFileUploads;
 
-    #[Rule(['required','image','max:2048'])]
+    #[Rule(['required', 'image', 'max:2048'])]
     public $image = null;
 
     public int $image_iteration = 0;
 
     public function removeImage()
     {
-        if(auth()->user()->image != null)
-        {
+        if (auth()->user()->image != null) {
             try {
 
                 File::delete(auth()->user()->image);
@@ -31,7 +30,10 @@ class Image extends Component
                 $this->dispatch('appearance-updated');
 
             } catch (\Throwable $th) {
-                session()->flash('message', 'Error when updating profile, please try again later.');
+                $this->dispatch('swal', [
+                    'title' => 'Remove profile image error',
+                    'icon' => 'error',
+                ]);
             }
         }
     }
@@ -44,10 +46,10 @@ class Image extends Component
 
             $temp_image = $this->image->store('public/images/photos');
 
-            $image = str_replace('public','storage', $temp_image);
+            $image = str_replace('public', 'storage', $temp_image);
 
             auth()->user()->update([
-                'image' => $image
+                'image' => $image,
             ]);
 
             $this->image_iteration++;
@@ -55,7 +57,10 @@ class Image extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            return $this->redirect(route('appearance.index'), navigate: true)->with('Erro when updating profile image, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update profile image error',
+                'icon' => 'error',
+            ]);
         }
     }
 

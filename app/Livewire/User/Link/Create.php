@@ -2,16 +2,16 @@
 
 namespace App\Livewire\User\Link;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
+use Livewire\Component;
 
 class Create extends Component
 {
-    #[Rule(['required','string','max:15'])]
+    #[Rule(['required', 'string', 'max:15'])]
     public string $title = '';
 
-    #[Rule(['required','url','active_url','max:255'])]
+    #[Rule(['required', 'url', 'active_url', 'max:255'])]
     public string $url = '';
 
     public int $total_links = 0;
@@ -25,10 +25,12 @@ class Create extends Component
 
     public function store()
     {
-        if($this->total_links >= 5)
-        {
-            $this->reset(['title','url']);
-            session()->flash('message', 'Can only have 5 links.');
+        if ($this->total_links >= 5) {
+            $this->reset(['title', 'url']);
+            $this->dispatch('swal', [
+                'title' => 'Can only have 5 links',
+                'icon' => 'warning',
+            ]);
         }
 
         $this->validate();
@@ -37,14 +39,17 @@ class Create extends Component
 
             auth()->user()->links()->create([
                 'title' => $this->title,
-                'url' => $this->url
+                'url' => $this->url,
             ]);
 
-            $this->reset(['title','url']);
+            $this->reset(['title', 'url']);
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when creating link, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Create link error',
+                'icon' => 'error',
+            ]);
         }
     }
 

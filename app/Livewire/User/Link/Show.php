@@ -3,8 +3,8 @@
 namespace App\Livewire\User\Link;
 
 use App\Models\Link;
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class Show extends Component
 {
@@ -24,10 +24,10 @@ class Show extends Component
 
         try {
 
-            if($link->is_icon){
+            if ($link->is_icon) {
                 $link->update(['is_icon' => 0]);
-            }else{
-                if(file_exists(public_path('storage/images/icons/brand-' . lcfirst($link->title) . '.svg'))){
+            } else {
+                if (file_exists(public_path('storage/images/icons/brand-'.lcfirst($link->title).'.svg'))) {
                     $link->update(['is_icon' => 1]);
                 }
             }
@@ -36,7 +36,10 @@ class Show extends Component
             $this->dispatch('link-updated');
 
         } catch (\Throwable $th) {
-            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when adding icon logo to link, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Add icon logo error',
+                'icon' => 'error',
+            ]);
         }
     }
 
@@ -51,7 +54,10 @@ class Show extends Component
             $this->dispatch('link-deleted');
 
         } catch (\Throwable $th) {
-            return $this->redirect(route('links.index'), navigate: true)->with('message', 'Error when deleting link, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Delete link error',
+                'icon' => 'error',
+            ]);
         }
     }
 

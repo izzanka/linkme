@@ -3,11 +3,6 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                <div class="mt-3">
-                    @if (session()->has('message'))
-                        @include('components.layouts.alert')
-                    @endif
-                </div>
                 <div class="card mt-3 rounded-4">
                     <div class="card-body">
                         <div class="container">

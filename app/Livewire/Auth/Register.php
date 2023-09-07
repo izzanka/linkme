@@ -2,20 +2,19 @@
 
 namespace App\Livewire\Auth;
 
-use App\Livewire\Forms\RegisterForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Register extends Component
 {
-    #[Rule(['required','string','max:19','unique:users,username'])]
+    #[Rule(['required', 'string', 'max:19', 'unique:users,username'])]
     public $username = '';
 
-    #[Rule(['required','email','max:255','unique:users,email'])]
+    #[Rule(['required', 'email', 'max:255', 'unique:users,email'])]
     public $email = '';
 
     #[Rule(['required', 'min:8', 'max:255'])]
@@ -27,8 +26,7 @@ class Register extends Component
 
         try {
 
-            DB::transaction(function()
-            {
+            DB::transaction(function () {
                 $user = User::create([
                     'username' => ucfirst($this->username),
                     'username_slug' => str()->slug($this->username),
@@ -44,7 +42,10 @@ class Register extends Component
             });
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Register error, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Register error',
+                'icon' => 'error',
+            ]);
         }
     }
 

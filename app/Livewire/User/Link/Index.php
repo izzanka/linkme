@@ -3,14 +3,17 @@
 namespace App\Livewire\User\Link;
 
 use Livewire\Attributes\On;
-use Livewire\Component;
 use Livewire\Attributes\Title;
+use Livewire\Component;
 
 class Index extends Component
 {
     public int $total_links = 0;
+
     public int $ctr = 0;
+
     public int $total_views = 0;
+
     public int $total_clicks = 0;
 
     #[On('link-deleted')]
@@ -20,8 +23,7 @@ class Index extends Component
         $this->total_clicks = auth()->user()->links()->sum('total_clicks');
         $this->total_links = auth()->user()->links()->count();
 
-        if($this->total_clicks != 0)
-        {
+        if ($this->total_clicks != 0) {
             $this->setCtr();
         }
     }

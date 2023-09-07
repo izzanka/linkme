@@ -2,18 +2,17 @@
 
 namespace App\Livewire\Auth;
 
-use App\Livewire\Forms\LoginForm;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class Login extends Component
 {
-    #[Rule(['required','email','max:255'])]
+    #[Rule(['required', 'email', 'max:255'])]
     public $email = '';
 
-    #[Rule(['required','max:255','min:8'])]
+    #[Rule(['required', 'max:255', 'min:8'])]
     public $password = '';
 
     #[Rule(['boolean'])]
@@ -25,14 +24,20 @@ class Login extends Component
 
         try {
 
-            if(Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)){
+            if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
                 $this->redirect(route('links.index'));
-            }else{
-                session()->flash('message', 'Email or password is wrong.');
+            } else {
+                $this->dispatch('swal', [
+                    'title' => 'Email or password is wrong',
+                    'icon' => 'error',
+                ]);
             }
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Login error, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Login error',
+                'icon' => 'error',
+            ]);
         }
     }
 
@@ -41,5 +46,4 @@ class Login extends Component
     {
         return view('livewire.auth.login');
     }
-
 }

@@ -2,9 +2,9 @@
 
 namespace App\Livewire\User\Appearance;
 
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Illuminate\Validation\Rule;
 
 class Profile extends Component
 {
@@ -15,8 +15,8 @@ class Profile extends Component
     public function rules()
     {
         return [
-            'username' => ['required','max:19','string', Rule::unique('users')->ignore(auth()->id())],
-            'bio' => ['string','max:40'],
+            'username' => ['required', 'max:19', 'string', Rule::unique('users')->ignore(auth()->id())],
+            'bio' => ['string', 'max:40'],
         ];
     }
 
@@ -40,7 +40,10 @@ class Profile extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating profile, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update username error',
+                'icon' => 'error',
+            ]);
         }
     }
 
@@ -57,7 +60,10 @@ class Profile extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            session()->flash('message', 'Error when updating profile, please try again later.');
+            $this->dispatch('swal', [
+                'title' => 'Update bio error',
+                'icon' => 'error',
+            ]);
         }
     }
 

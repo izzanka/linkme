@@ -9,20 +9,30 @@ use Livewire\Component;
 class Show extends Component
 {
     public $links;
+
     public string $font_color = '';
+
     public string $background_color = '';
+
     public string $button_rounded = '';
+
     public string $button_outline = '';
+
     public string $button_color = '';
+
     public string $button_font_color = '';
+
     public string $button_shadow = '';
+
     public string $username = '';
+
     public string $bio = '';
+
     public $image;
 
     public function mount(User $user)
     {
-        $user->load(['links' => fn($query) => $query->where('is_active', true), 'appearance']);
+        $user->load(['links' => fn ($query) => $query->where('is_active', true), 'appearance']);
 
         $this->font_color = $user->appearance->font_color;
         $this->background_color = $user->appearance->background_color;
@@ -38,14 +48,11 @@ class Show extends Component
 
         $this->links = $user->links()->get();
 
-        if(auth()->check())
-        {
-            if(auth()->id() != $user->id)
-            {
+        if (auth()->check()) {
+            if (auth()->id() != $user->id) {
                 $user->increment('total_views');
             }
-
-        }else{
+        } else {
             $user->increment('total_views');
         }
 
@@ -53,14 +60,11 @@ class Show extends Component
 
     public function click(Link $link)
     {
-        if(auth()->check())
-        {
-            if(auth()->id() != $link->user_id)
-            {
+        if (auth()->check()) {
+            if (auth()->id() != $link->user_id) {
                 $link->increment('total_clicks');
             }
-
-        }else{
+        } else {
             $link->increment('total_clicks');
         }
     }
