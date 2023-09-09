@@ -3,8 +3,30 @@
         <div class="row">
             <div class="col-6">
                 <livewire:user.appearance.profile/>
-                <h2 class="mt-4"><b>Custom appearance</b></h2>
-                <h3 class="mt-2">
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <h2 class=""><b>Custom appearance</b></h2>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button wire:click="resetAppearance" class="btn rounded-3 btn-danger" onclick="confirm('Are you sure want to reset your custom appearance to default?') || event.stopImmediatePropagation()" @if(!$can_reset) disabled @endif>
+                            <div wire:loading.remove wire:target="resetAppearance">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 7l16 0"></path>
+                                    <path d="M10 11l0 6"></path>
+                                    <path d="M14 11l0 6"></path>
+                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                </svg>
+                            </div>
+                            <div wire:loading wire:target="resetAppearance">
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            </div>
+                            <strong>Reset</strong>
+                        </button>
+                    </div>
+                </div>
+                <h3 class="mt-3">
                     <b>Completely customize your LinkMe profile. Change your background with colors, gradients and images. Choose a button style, change the typeface and more.</b>
                 </h3>
                 <h2 class="mt-4">

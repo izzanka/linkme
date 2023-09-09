@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('button_shadow')->default('shadow-none');
             $table->string('background_color', 7)->default('#FFFFFF');
             $table->string('font_color', 7)->default('#000000');
+            $table->boolean('can_reset')->default(false);
             $table->timestamps();
         });
     }
