@@ -20,8 +20,6 @@ class Show extends Component
 
     public function addIconLogo(Link $link)
     {
-        $this->authorize('update', $link);
-
         try {
 
             if ($link->is_icon) {
@@ -45,8 +43,6 @@ class Show extends Component
 
     public function delete(Link $link)
     {
-        $this->authorize('update', $link);
-
         try {
 
             $link->delete();

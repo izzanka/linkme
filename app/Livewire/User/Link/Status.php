@@ -19,8 +19,6 @@ class Status extends Component
 
     public function updated($name, $value)
     {
-        $this->authorize('update', $this->link);
-
         try {
 
             $this->link->update([
