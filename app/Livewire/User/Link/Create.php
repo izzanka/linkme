@@ -11,7 +11,7 @@ class Create extends Component
     #[Rule(['required', 'string', 'max:15'])]
     public string $title = '';
 
-    #[Rule(['required', 'url', 'active_url', 'max:255'])]
+    #[Rule(['required', 'url:https', 'active_url', 'max:255'])]
     public string $url = '';
 
     public int $total_links = 0;
