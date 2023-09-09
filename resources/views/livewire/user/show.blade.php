@@ -21,9 +21,9 @@
         </div>
         <div class="row mt-2 justify-content-center">
             @foreach ($links as $link)
-                <div class="col-8">
+                <div class="col-8" wire:key={{ $link->id }}>
                     <div class="d-grid">
-                        <a href="{{ $link->url }}" target="_blank" class="mt-3 btn btn-lg text-nowrap {{ $button_shadow }} rounded-{{ $button_rounded }}" style="@if ($button_outline == true) border-color: {{ $button_color }}  @else background-color: {{ $button_color }} @endif">
+                        <a wire:click="click({{ $link->id }})" href="{{ $link->url }}" target="_blank" class="mt-3 btn btn-lg text-nowrap {{ $button_shadow }} rounded-{{ $button_rounded }}" style="@if ($button_outline == true) border-color: {{ $button_color }}  @else background-color: {{ $button_color }} @endif">
                             @if ($link->is_icon)
                                 <img src="{{ asset('storage/images/icons/brand-' . lcfirst($link->title) . '.svg') }}" alt="logo-icon" class="me-2">
                             @endif

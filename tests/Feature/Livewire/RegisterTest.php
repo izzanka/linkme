@@ -21,7 +21,7 @@ class RegisterTest extends TestCase
 
     public function test_can_register()
     {
-        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register');
+        Livewire::test(Register::class)->set('username', 'test')->set('email', $this->email)->set('password', 'password')->call('register');
 
         $this->assertTrue(
             auth()->user()->email == $this->email
@@ -30,12 +30,12 @@ class RegisterTest extends TestCase
 
     // public function test_is_invalid_register()
     // {
-    //     Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register')->assertSee('Something wrong.');
+    //     Livewire::test(Register::class)->set('username', 'test')->set('email', $this->email)->set('password', 'password')->call('register')->assertSee('Something wrong.');
     // }
 
     public function test_is_redirected_after_register()
     {
-        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register')->assertRedirect('/links');
+        Livewire::test(Register::class)->set('username', 'test')->set('email', $this->email)->set('password', 'password')->call('register')->assertRedirect('/links');
     }
 
     public function test_is_redirected_if_already_registered()
@@ -47,16 +47,16 @@ class RegisterTest extends TestCase
 
     public function test_is_username_validated()
     {
-        Livewire::test(Register::class)->set('registerForm.email', $this->email)->set('registerForm.password', 'password')->call('register')->assertHasErrors(['registerForm.username' => 'required']);
+        Livewire::test(Register::class)->set('email', $this->email)->set('password', 'password')->call('register')->assertHasErrors(['username' => 'required']);
     }
 
     public function test_is_email_validated()
     {
-        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.password', 'password')->call('register')->assertHasErrors(['registerForm.email' => 'required']);
+        Livewire::test(Register::class)->set('username', 'test')->set('password', 'password')->call('register')->assertHasErrors(['email' => 'required']);
     }
 
     public function test_is_password_validated()
     {
-        Livewire::test(Register::class)->set('registerForm.username', 'test')->set('registerForm.email', $this->email)->call('register')->assertHasErrors(['registerForm.password' => 'required']);
+        Livewire::test(Register::class)->set('username', 'test')->set('email', $this->email)->call('register')->assertHasErrors(['password' => 'required']);
     }
 }

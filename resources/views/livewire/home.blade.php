@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-6 mt-4 text-center mb-4">
-                    <img loading="lazy" src="{{ asset('storage/images/photos/home.jpeg') }}" class="rounded-4 bg-light border border-dark" alt="preview" style="height: 600px">
+                    <img loading="lazy" src="{{ asset('storage/images/photos/home.jpeg') }}" class="rounded-4" alt="preview" style="height: 550px">
                 </div>
             </div>
         </div>

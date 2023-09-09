@@ -28,7 +28,7 @@ class Register extends Component
 
             DB::transaction(function () {
                 $user = User::create([
-                    'username' => ucfirst($this->username),
+                    'username' => $this->username,
                     'username_slug' => str()->slug($this->username),
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
