@@ -20,12 +20,19 @@ class Index extends Component
     #[Rule(['required', 'size:7', 'starts_with:#'])]
     public string $font_color = '';
 
+    public bool $status = false;
+
     public function mount()
     {
         $this->background_color = auth()->user()->appearance->background_color;
         $this->button_color = auth()->user()->appearance->button_color;
         $this->button_font_color = auth()->user()->appearance->button_font_color;
         $this->font_color = auth()->user()->appearance->font_color;
+
+        if(auth()->user()->links()->where('is_active', true)->count() > 0)
+        {
+            $this->status = true;
+        }
     }
 
     public function updated($name, $value)
