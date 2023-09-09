@@ -109,8 +109,8 @@
         <script>
             window.addEventListener('swal',function(e){
                 Swal.fire({
-                    'title': e.detail[0].title,
-                    'icon': e.detail[0].icon,
+                    title: e.detail[0].title,
+                    icon: e.detail[0].icon,
                 });
             });
         </script>
