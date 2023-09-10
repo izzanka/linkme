@@ -30,6 +30,11 @@ class Edit extends Component
 
     public function updatedUrl($name, $value)
     {
+        if($this->link->user_id != auth()->id())
+        {
+            $this->redirect(route('links.index'));
+        }
+
         $this->validateOnly('url');
 
         try {
@@ -51,6 +56,11 @@ class Edit extends Component
 
     public function updatedTitle()
     {
+        if($this->link->user_id != auth()->id())
+        {
+            $this->redirect(route('links.index'));
+        }
+
         $this->validateOnly('title');
 
         try {

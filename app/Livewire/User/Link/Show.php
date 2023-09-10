@@ -20,6 +20,11 @@ class Show extends Component
 
     public function addIconLogo(Link $link)
     {
+        if($link->user_id != auth()->id())
+        {
+            $this->redirect(route('links.index'));
+        }
+
         try {
 
             if ($link->is_icon) {
@@ -43,6 +48,11 @@ class Show extends Component
 
     public function delete(Link $link)
     {
+        if($link->user_id != auth()->id())
+        {
+            $this->redirect(route('links.index'));
+        }
+
         try {
 
             $link->delete();
