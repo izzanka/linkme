@@ -30,7 +30,6 @@ class Image extends Component
         ]);
     }
 
-
     #[On('swal-profile-remove')]
     public function removeImage()
     {
