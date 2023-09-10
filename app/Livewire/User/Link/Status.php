@@ -19,8 +19,7 @@ class Status extends Component
 
     public function updated($name, $value)
     {
-        if($this->link->user_id != auth()->id())
-        {
+        if ($this->link->user_id != auth()->id()) {
             $this->redirect(route('links.index'));
         }
 

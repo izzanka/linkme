@@ -30,8 +30,7 @@ class Edit extends Component
 
     public function updatedUrl($name, $value)
     {
-        if($this->link->user_id != auth()->id())
-        {
+        if ($this->link->user_id != auth()->id()) {
             $this->redirect(route('links.index'));
         }
 
@@ -56,8 +55,7 @@ class Edit extends Component
 
     public function updatedTitle()
     {
-        if($this->link->user_id != auth()->id())
-        {
+        if ($this->link->user_id != auth()->id()) {
             $this->redirect(route('links.index'));
         }
 

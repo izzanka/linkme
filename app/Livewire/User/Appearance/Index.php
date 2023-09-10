@@ -22,6 +22,7 @@ class Index extends Component
     public string $font_color = '';
 
     public bool $status = false;
+
     public $can_reset = false;
 
     #[On('appearance-reset')]
@@ -33,8 +34,7 @@ class Index extends Component
         $this->font_color = auth()->user()->appearance->font_color;
         $this->can_reset = auth()->user()->appearance->can_reset;
 
-        if(auth()->user()->links()->where('is_active', true)->count() > 0)
-        {
+        if (auth()->user()->links()->where('is_active', true)->count() > 0) {
             $this->status = true;
         }
     }
@@ -49,8 +49,7 @@ class Index extends Component
                 $name => $value,
             ]);
 
-            if(!$this->can_reset)
-            {
+            if (! $this->can_reset) {
                 auth()->user()->appearance()->update(['can_reset' => true]);
             }
 
@@ -91,8 +90,7 @@ class Index extends Component
                 ]);
             }
 
-            if(!$this->can_reset)
-            {
+            if (! $this->can_reset) {
                 auth()->user()->appearance()->update(['can_reset' => true]);
             }
 
@@ -133,7 +131,6 @@ class Index extends Component
             ]);
         }
     }
-
 
     #[Title('Appearance | LinkMe')]
     public function render()
