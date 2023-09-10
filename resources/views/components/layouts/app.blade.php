@@ -109,10 +109,19 @@
         <script>
             window.addEventListener('swal',function(e){
                 const data = e.detail[0];
-                Swal.fire({
-                    title: data.title,
-                    icon: data.icon,
-                });
+
+                if(data == undefined){
+                    Swal.fire({
+                        title: e.detail.title,
+                        icon: e.detail.icon,
+                    });
+
+                }else{
+                    Swal.fire({
+                        title: data.title,
+                        icon: data.icon,
+                    });
+                }
             });
 
             window.addEventListener('swal-dialog',function(e){

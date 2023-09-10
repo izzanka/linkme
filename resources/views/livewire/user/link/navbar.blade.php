@@ -35,7 +35,10 @@
             function copyLink(){
                 let url = "{{ route('users.show', auth()->user()->username_slug) }}";
                 navigator.clipboard.writeText(url);
-                alert("Link copied to clipboard.");
+                Livewire.dispatch('swal',{
+                    title: 'Link copied to clipboard',
+                    icon: 'success',
+                });
             }
         </script>
     </div>
