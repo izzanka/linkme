@@ -23,9 +23,9 @@
                 </div>
                 Update Profile Image
             </button>
-
-            <button @if(auth()->user()->image == null) disabled @endif class="btn btn-secondary rounded-3" wire:click.prevent="removeImage" onclick="confirm('Are you sure want to delete this profile image?') || event.stopImmediatePropagation()">
-                <div wire:loading.remove wire:target="removeImage">
+        </form>
+            <button @if(auth()->user()->image == null) disabled @endif class="btn btn-secondary rounded-3" wire:click.prevent="confirmRemove">
+                <div wire:loading.remove wire:target="confirmRemove">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M15 8h.01"></path>
@@ -36,11 +36,10 @@
                         <path d="M17 22l5 -5"></path>
                     </svg>
                 </div>
-                <div wire:loading wire:target="removeImage">
+                <div wire:loading wire:target="confirmRemove">
                     <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                 </div>
                 Remove Profile Image
             </button>
         </div>
-    </form>
 </div>

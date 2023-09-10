@@ -45,6 +45,21 @@ class Show extends Component
         }
     }
 
+    public function confirmDelete($link_id)
+    {
+        $this->dispatch('swal-dialog', [
+            'title' => 'Delete link?',
+            'icon' => 'warning',
+            'showCancelButton' => true,
+            'confirmButtonText' => 'Delete',
+            'cancelButtonColor' => '#DB5E5F',
+            'confirmButtonColor' => '#206BC4',
+            'link_id' => $link_id,
+            'name' => 'link',
+        ]);
+    }
+
+    #[On('swal-link-delete')]
     public function delete(Link $link)
     {
         if ($link->user_id != auth()->id()) {

@@ -8,8 +8,8 @@
                         <h2 class=""><b>Custom appearance</b></h2>
                     </div>
                     <div class="col-6 text-end">
-                        <button wire:click="resetAppearance" class="btn rounded-3 btn-danger" onclick="confirm('Are you sure want to reset your custom appearance to default?') || event.stopImmediatePropagation()" @if(!$can_reset) disabled @endif>
-                            <div wire:loading.remove wire:target="resetAppearance">
+                        <button wire:click="confirmReset" class="btn rounded-3 btn-danger" @if(!$can_reset) disabled @endif>
+                            <div wire:loading.remove wire:target="confirmReset">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M4 7l16 0"></path>
@@ -19,7 +19,7 @@
                                     <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                                 </svg>
                             </div>
-                            <div wire:loading wire:target="resetAppearance">
+                            <div wire:loading wire:target="confirmReset">
                                 <span class="spinner-border spinner-border-sm me-2" role="status"></span>
                             </div>
                             <strong>Reset</strong>

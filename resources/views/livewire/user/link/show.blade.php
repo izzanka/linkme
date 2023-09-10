@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-2">
                             <div class="text-end">
-                                <svg role="button" onclick="confirm('Are you sure want to delete this link?') || event.stopImmediatePropagation()" wire:click.prevent="delete({{ $link->id }})" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <svg role="button" wire:click="confirmDelete({{ $link->id }})" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                     <path d="M4 7l16 0"></path>
                                     <path d="M10 11l0 6"></path>

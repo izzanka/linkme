@@ -105,6 +105,20 @@ class Index extends Component
         }
     }
 
+    public function confirmReset()
+    {
+        $this->dispatch('swal-dialog', [
+            'title' => 'Reset appearance?',
+            'icon' => 'warning',
+            'showCancelButton' => true,
+            'confirmButtonText' => 'Reset',
+            'cancelButtonColor' => '#DB5E5F',
+            'confirmButtonColor' => '#206BC4',
+            'name' => 'appearance',
+        ]);
+    }
+
+    #[On('swal-appearance-reset')]
     public function resetAppearance()
     {
         try {

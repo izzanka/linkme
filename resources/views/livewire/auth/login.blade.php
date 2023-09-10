@@ -43,7 +43,7 @@
                                       <span class="form-check-label">Remember me on this device</span>
                                     </label>
                                 </div>
-                                <div class="mt-4 text-center">
+                                <div class="mt-3 mb-2 text-center">
                                     <button type="submit" class="btn btn-primary w-100">
                                         <div wire:loading.remove wire:target="login">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-login" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -59,7 +59,7 @@
                                     </button>
                                 </div>
                             </form>
-                            <div class="hr-text">OR</div>
+                            {{-- <div class="hr-text">OR</div>
                             <div class="text-center">
                                 <button type="button" class="btn btn-danger w-100 mb-1" disabled>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-google" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -68,7 +68,7 @@
                                      </svg>
                                     Sign in with Google
                                 </button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

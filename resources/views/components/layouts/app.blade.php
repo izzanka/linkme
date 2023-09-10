@@ -108,9 +108,36 @@
         <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
         <script>
             window.addEventListener('swal',function(e){
+                const data = e.detail[0];
                 Swal.fire({
-                    title: e.detail[0].title,
-                    icon: e.detail[0].icon,
+                    title: data.title,
+                    icon: data.icon,
+                });
+            });
+
+            window.addEventListener('swal-dialog',function(e){
+                const data = e.detail[0];
+                Swal.fire({
+                    title: data.title,
+                    icon: data.icon,
+                    showCancelButton: data.showCancelButton,
+                    confirmButtonText: data.confirmButtonText,
+                    cancelButtonColor: data.cancelButtonColor,
+                    confirmButtonColor: data.confirmButtonColor,
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        if(data.name == 'link'){
+                            Livewire.dispatch('swal-link-delete', {link: data.link_id})
+                        }
+
+                        if(data.name == 'appearance'){
+                            Livewire.dispatch('swal-appearance-reset');
+                        }
+
+                        if(data.name == 'image'){
+                            Livewire.dispatch('swal-profile-remove');
+                        }
+                    }
                 });
             });
         </script>
