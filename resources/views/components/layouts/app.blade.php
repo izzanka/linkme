@@ -115,25 +115,24 @@
             });
 
             window.addEventListener('swal-dialog',function(e){
-                const data = e.detail[0];
                 Swal.fire({
-                    title: data.title,
-                    icon: data.icon,
-                    showCancelButton: data.showCancelButton,
-                    confirmButtonText: data.confirmButtonText,
-                    cancelButtonColor: data.cancelButtonColor,
-                    confirmButtonColor: data.confirmButtonColor,
+                    title: e.detail[0].title,
+                    icon: e.detail[0].icon,
+                    showCancelButton: e.detail[0].showCancelButton,
+                    confirmButtonText: e.detail[0].confirmButtonText,
+                    cancelButtonColor: e.detail[0].cancelButtonColor,
+                    confirmButtonColor: e.detail[0].confirmButtonColor,
                 }).then((result) => {
                     if(result.isConfirmed){
-                        if(data.name == 'link'){
-                            Livewire.dispatch('swal-link-delete', {link: data.link_id})
+                        if(e.detail[0].name == 'link'){
+                            Livewire.dispatch('swal-link-delete', {link: e.detail[0].link_id})
                         }
 
-                        if(data.name == 'appearance'){
+                        if(e.detail[0].name == 'appearance'){
                             Livewire.dispatch('swal-appearance-reset');
                         }
 
-                        if(data.name == 'image'){
+                        if(e.detail[0].name == 'image'){
                             Livewire.dispatch('swal-profile-remove');
                         }
                     }
