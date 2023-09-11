@@ -45,10 +45,10 @@ class Image extends Component
                 $this->dispatch('appearance-updated');
 
             } catch (\Throwable $th) {
-                $this->dispatch('swal', [
-                    'title' => 'Remove profile image error',
-                    'icon' => 'error',
-                ]);
+                $this->dispatch('swal',
+                    title: 'Remove profile image error',
+                    icon: 'error',
+                );
             }
         }
     }
@@ -72,10 +72,10 @@ class Image extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update profile image error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update profile image error',
+                icon: 'error',
+            );
         }
     }
 

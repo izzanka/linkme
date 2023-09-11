@@ -46,10 +46,10 @@ class Edit extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update url error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update url error',
+                icon: 'error',
+            );
         }
     }
 
@@ -77,10 +77,10 @@ class Edit extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update title error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update title error',
+                icon: 'error',
+            );
         }
     }
 

@@ -32,10 +32,10 @@ class Status extends Component
             $this->dispatch('link-updated');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update link status error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update link status error',
+                icon: 'error',
+            );
         }
     }
 

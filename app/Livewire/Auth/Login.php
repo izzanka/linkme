@@ -27,17 +27,17 @@ class Login extends Component
             if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
                 $this->redirect(route('links.index'));
             } else {
-                $this->dispatch('swal', [
-                    'title' => 'Email or password is wrong',
-                    'icon' => 'error',
-                ]);
+                $this->dispatch('swal',
+                    title: 'Email or password is wrong',
+                    icon: 'error',
+                );
             }
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Login error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Login error',
+                icon: 'error',
+            );
         }
     }
 

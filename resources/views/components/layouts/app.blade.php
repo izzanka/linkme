@@ -108,20 +108,10 @@
         <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
         <script>
             window.addEventListener('swal',function(e){
-                const data = e.detail[0];
-
-                if(data == undefined){
-                    Swal.fire({
-                        title: e.detail.title,
-                        icon: e.detail.icon,
-                    });
-
-                }else{
-                    Swal.fire({
-                        title: data.title,
-                        icon: data.icon,
-                    });
-                }
+                Swal.fire({
+                    title: e.detail.title,
+                    icon: e.detail.icon,
+                });
             });
 
             window.addEventListener('swal-dialog',function(e){

@@ -27,10 +27,10 @@ class Create extends Component
     {
         if ($this->total_links >= 5) {
             $this->reset(['title', 'url']);
-            $this->dispatch('swal', [
-                'title' => 'Can only have 5 links',
-                'icon' => 'warning',
-            ]);
+            $this->dispatch('swal',
+                title: 'Can only have 5 links',
+                icon: 'warning',
+            );
         }
 
         $this->validate();
@@ -46,10 +46,10 @@ class Create extends Component
             $this->dispatch('link-created');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Create link error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Create link error',
+                icon: 'error',
+            );
         }
     }
 

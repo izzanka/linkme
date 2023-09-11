@@ -38,10 +38,10 @@ class Show extends Component
             $this->dispatch('link-updated');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Add icon logo error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Add icon logo error',
+                icon: 'error',
+            );
         }
     }
 
@@ -73,10 +73,10 @@ class Show extends Component
             $this->dispatch('link-deleted');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Delete link error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Delete link error',
+                icon: 'error',
+            );
         }
     }
 

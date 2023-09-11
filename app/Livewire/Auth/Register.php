@@ -42,10 +42,10 @@ class Register extends Component
             });
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Register error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Register error',
+                icon: 'error',
+            );
         }
     }
 

@@ -40,10 +40,10 @@ class Profile extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update username error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update username error',
+                icon: 'error',
+            );
         }
     }
 
@@ -60,10 +60,10 @@ class Profile extends Component
             $this->dispatch('appearance-updated');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update bio error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update bio error',
+                icon: 'error',
+            );
         }
     }
 

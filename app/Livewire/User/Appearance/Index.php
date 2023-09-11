@@ -57,10 +57,10 @@ class Index extends Component
             $this->dispatch('appearance-reset');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update appearance error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update appearance error',
+                icon: 'error',
+            );
         }
     }
 
@@ -70,10 +70,10 @@ class Index extends Component
         $sizes = ['0', '4', 'pill', 'shadow-sm', 'shadow', 'shadow-lg'];
 
         if (! in_array($type, $types) || ! in_array($size, $sizes)) {
-            $this->dispatch('swal', [
-                'title' => 'Update button style error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update button style error',
+                icon: 'error',
+            );
         }
 
         try {
@@ -98,10 +98,10 @@ class Index extends Component
             $this->dispatch('appearance-reset');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Update button style error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Update button style error',
+                icon: 'error',
+            );
         }
     }
 
@@ -139,10 +139,10 @@ class Index extends Component
             $this->dispatch('appearance-reset');
 
         } catch (\Throwable $th) {
-            $this->dispatch('swal', [
-                'title' => 'Reset appearance error',
-                'icon' => 'error',
-            ]);
+            $this->dispatch('swal',
+                title: 'Reset appearance error',
+                icon: 'error',
+            );
         }
     }
 
