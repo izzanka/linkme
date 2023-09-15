@@ -26,7 +26,7 @@ class Show extends Component
 
     public string $username = '';
 
-    public string $bio = '';
+    public $bio;
 
     public $image;
 
