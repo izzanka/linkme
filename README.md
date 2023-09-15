@@ -24,7 +24,7 @@ a Linktree (https://linktr.ee) website clone
 ## Preview
 ![Screenshot (1137)](https://github.com/izzanka/linkme/assets/59280562/d2252288-b7ec-4aba-a598-97c8b1e908ba)
 ![Screenshot (1139)](https://github.com/izzanka/linkme/assets/59280562/24261d65-bfe3-4cf3-80db-f4af11599f83)
-![Screenshot (1138)](https://github.com/izzanka/linkme/assets/59280562/8923c781-a2af-45c3-9a5d-6263a14a3c07)
+![Screenshot (1149)](https://github.com/izzanka/linkme/assets/59280562/311d9849-735d-4ffb-a384-b09aa04741bb)
 ![Screenshot (1140)](https://github.com/izzanka/linkme/assets/59280562/a99e42f5-7337-448c-9a2a-74daae5fea8b)
 ![Screenshot (1141)](https://github.com/izzanka/linkme/assets/59280562/a35ac968-2ed1-44cb-862d-0ca8a00ab2ec)
 ![Screenshot (1147)](https://github.com/izzanka/linkme/assets/59280562/52997caf-e285-44b5-8b32-0699de2ab4e3)
