@@ -10,7 +10,7 @@ class Profile extends Component
 {
     public string $username = '';
 
-    public $bio = null;
+    public $bio;
 
     public function rules()
     {

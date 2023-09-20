@@ -14,7 +14,6 @@ class Image extends Component
 
     #[Rule(['required', 'image', 'max:2048'])]
     public $image = null;
-
     public int $image_iteration = 0;
 
     public function confirmRemove()

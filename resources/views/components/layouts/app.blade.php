@@ -82,7 +82,7 @@
                 {{ $slot }}
             </div>
 
-            <footer class="footer footer-transparent d-print-none">
+            {{-- <footer class="footer footer-transparent d-print-none">
                 <div class="container-xl mt-2">
                   <div class="row text-center align-items-center flex-row-reverse">
                     <div class="col-lg-auto ms-lg-auto">
@@ -103,7 +103,7 @@
                     </div>
                   </div>
                 </div>
-            </footer>
+            </footer> --}}
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
         <script>

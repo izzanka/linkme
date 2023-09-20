@@ -45,8 +45,12 @@ class Show extends Component
         }
     }
 
-    public function confirmDelete($link_id)
+    public function confirmDelete(Link $link)
     {
+        if ($link->user_id != auth()->id()) {
+            $this->redirect(route('links.index'));
+        }
+
         $this->dispatch('swal-dialog', [
             'title' => 'Delete link?',
             'icon' => 'warning',
@@ -54,7 +58,7 @@ class Show extends Component
             'confirmButtonText' => 'Delete',
             'cancelButtonColor' => '#DB5E5F',
             'confirmButtonColor' => '#206BC4',
-            'link_id' => $link_id,
+            'link_id' => $link->id,
             'name' => 'link',
         ]);
     }

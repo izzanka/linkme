@@ -28,7 +28,7 @@ class Edit extends Component
         $this->link = $link;
     }
 
-    public function updatedUrl($name, $value)
+    public function updatedUrl()
     {
         if ($this->link->user_id != auth()->id()) {
             $this->redirect(route('links.index'));

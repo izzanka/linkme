@@ -69,7 +69,7 @@ class Index extends Component
         $types = ['fill', 'outline', 'shadow'];
         $sizes = ['0', '4', 'pill', 'shadow-sm', 'shadow', 'shadow-lg'];
 
-        if (! in_array($type, $types) || ! in_array($size, $sizes)) {
+        if (!in_array($type, $types) || !in_array($size, $sizes)) {
             $this->dispatch('swal',
                 title: 'Update button style error',
                 icon: 'error',
