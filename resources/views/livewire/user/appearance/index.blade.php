@@ -138,7 +138,7 @@
                     <b>Fonts</b>
                     <div class="spinner-border spinner-border-sm ms-1" role="status" wire:loading wire:target="font_color"></div>
                 </h2>
-                <div class="card rounded-4 mt-3">
+                <div class="card rounded-4 mt-3 mb-4">
                     <div class="card-body">
                         <div class="mb-3">
                             <label class="form-label"><strong>Color</strong></label>

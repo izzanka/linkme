@@ -1,5 +1,5 @@
 <div>
-<div class="mt-3">
+<div class="mt-3 mb-4">
     @if($links)
         @foreach ($links as $index => $link)
             <div class="card mt-3 rounded-4" wire:key="{{ $link->id }}">
